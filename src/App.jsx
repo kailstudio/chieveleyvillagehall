@@ -1,43 +1,35 @@
 import { useEffect } from 'react';
 import { useRoute } from './router.js';
+import { REDIRECTS } from './data/content.js';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import Home from './pages/Home.jsx';
-import Booking from './pages/Booking.jsx';
-import RegularEvents from './pages/RegularEvents.jsx';
-import Contacts from './pages/Contacts.jsx';
-import SeasonalEvents from './pages/SeasonalEvents.jsx';
-import DogClubs from './pages/DogClubs.jsx';
-import Vision2050 from './pages/Vision2050.jsx';
-import NewEvents from './pages/NewEvents.jsx';
-import Facilities from './pages/Facilities.jsx';
-import Gallery from './pages/Gallery.jsx';
-import Fundraising from './pages/Fundraising.jsx';
-import Club500 from './pages/Club500.jsx';
-import Governance from './pages/Governance.jsx';
+import WhatsOn from './pages/WhatsOn.jsx';
+import Hire from './pages/Hire.jsx';
+import Support from './pages/Support.jsx';
+import About from './pages/About.jsx';
 import NotFound from './pages/NotFound.jsx';
 
+// Five pages (plus "page not found"), following the October 2026 sitemap review.
 const PAGES = {
   home: Home,
-  booking: Booking,
-  'regular-events': RegularEvents,
-  contacts: Contacts,
-  'seasonal-events': SeasonalEvents,
-  'dog-clubs': DogClubs,
-  'vision-2050': Vision2050,
-  'new-events': NewEvents,
-  facilities: Facilities,
-  gallery: Gallery,
-  fundraising: Fundraising,
-  '500-club': Club500,
-  governance: Governance,
+  'whats-on': WhatsOn,
+  hire: Hire,
+  support: Support,
+  about: About,
 };
 
 export default function App() {
   const { page, section } = useRoute();
+  const redirect = REDIRECTS[section ? `${page}/${section}` : page] || (section && REDIRECTS[page]);
   const Page = PAGES[page] || NotFound;
 
   useEffect(() => {
+    if (redirect) window.location.replace(`#/${redirect}`);
+  }, [redirect]);
+
+  useEffect(() => {
+    if (redirect) return;
     if (section) {
       requestAnimationFrame(() => {
         const el = document.getElementById(section);
@@ -46,7 +38,9 @@ export default function App() {
     } else {
       window.scrollTo(0, 0);
     }
-  }, [page, section]);
+  }, [page, section, redirect]);
+
+  if (redirect) return null;
 
   return (
     <>

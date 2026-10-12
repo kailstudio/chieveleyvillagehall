@@ -1,36 +1,41 @@
 import { SITE } from '../data/content.js';
 import { href } from '../router.js';
+import { Arrow } from './Bits.jsx';
 
 export default function Footer() {
   return (
     <footer className="site-footer">
+      <div className="wrap footer-top">
+        <p className="footer-big">Bringing community <span className="thin">together.</span></p>
+        <a className="btn btn-outline-light" href={href('hire/how-to-book')}>Book the hall <Arrow /></a>
+      </div>
       <div className="wrap footer-grid">
-        <div className="footer-intro">
-          <p className="footer-name">Chieveley Village Hall<br /><em>{SITE.tagline}</em></p>
-          <p className="muted-light">{SITE.address}</p>
-          <div className="socials">
-            <a href={SITE.instagram} target="_blank" rel="noreferrer">Instagram</a>
-            <a href={SITE.facebook} target="_blank" rel="noreferrer">Facebook</a>
-            <a href={SITE.mapsUrl} target="_blank" rel="noreferrer">Google Maps</a>
-          </div>
-        </div>
-
         <div>
-          <h3 className="footer-h">Help with bookings</h3>
+          <h3 className="footer-h">Visit</h3>
+          <p>{SITE.address}</p>
+          <a className="text-link light" href={SITE.mapsUrl} target="_blank" rel="noreferrer">Google Maps <Arrow /></a>
+        </div>
+        <div>
+          <h3 className="footer-h">Bookings</h3>
           <p>{SITE.bookingsManager}, Bookings Manager<br />
             <a href={`mailto:${SITE.email}`}>{SITE.email}</a><br />
             <a href={`tel:${SITE.phone.replace(/\s/g, '')}`}>{SITE.phone}</a></p>
-          <p className="muted-light">Also your contact for operations and help on the day.</p>
         </div>
-
         <div>
-          <h3 className="footer-h">Quick links</h3>
+          <h3 className="footer-h">The site</h3>
           <ul className="footer-links">
-            <li><a href={href('booking')}>How to book</a></li>
-            <li><a href={href('home/coffee-stop')}>The Coffee Stop</a></li>
-            <li><a href={href('regular-events')}>Classes &amp; activities</a></li>
-            <li><a href={href('500-club/join')}>Donate · 500 Club</a></li>
-            <li><a href={href('governance')}>Governance</a></li>
+            <li><a href={href('whats-on')}>What's on</a></li>
+            <li><a href={href('hire')}>Hire the hall</a></li>
+            <li><a href={href('support')}>Support us</a></li>
+            <li><a href={href('about')}>About</a></li>
+            <li><a href={href('about/contact')}>Contact us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 className="footer-h">Follow</h3>
+          <ul className="footer-links">
+            <li><a href={SITE.instagram} target="_blank" rel="noreferrer">Instagram</a></li>
+            <li><a href={SITE.facebook} target="_blank" rel="noreferrer">Facebook</a></li>
           </ul>
         </div>
       </div>
