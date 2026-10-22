@@ -1,4 +1,4 @@
-import { SITE, CLUB_500 } from '../data/content.js';
+import { CLUB_500, COMMITTEE_CONTACT } from '../data/content.js';
 import { href } from '../router.js';
 import { PageHeader, JumpLinks, Photo, Arrow } from '../components/Bits.jsx';
 
@@ -6,33 +6,43 @@ export default function Support() {
   return (
     <>
       <PageHeader photo="hero-support" eyebrow="Support us" title="Help" accent="your hall."
-        intro="The hall is a registered charity, run by volunteers. Join the 500 Club, lend a hand at an event or dedicate a bench. It doesn't matter how long you've lived in the village.">
+        intro="The hall is a registered charity, run by volunteers. Make a donation, join the 500 Club or lend a hand at an event. It doesn't matter how long you've lived in the village.">
         <div className="hero-actions">
-          <a className="btn btn-solid-light" href={href('support/500-club')}>Join the 500 Club <Arrow /></a>
-          <a className="btn btn-outline-light" href={href('support/volunteer')}>Volunteer</a>
+          <a className="btn btn-solid-light" href={href('support/donate')}>Make a donation <Arrow /></a>
+          <a className="btn btn-outline-light" href={href('support/500-club')}>Join the 500 Club</a>
         </div>
       </PageHeader>
-      <JumpLinks page="support" links={[['donate', 'Donate'], ['500-club', '500 Club'], ['winners', 'Winners'], ['volunteer', 'Volunteer'], ['bench', 'Dedicate a bench']]} />
+      <JumpLinks page="support" links={[['donate', 'Donate'], ['500-club', '500 Club'], ['winners', 'Winners'], ['volunteer', 'Volunteer']]} />
 
       {/* ---------- Donate ---------- */}
       <section id="donate" className="section">
-        <div className="wrap three-col">
-          <article className="info-card">
-            <span className="big-stat">{CLUB_500.ticket}</span>
-            <h2 className="h3">A 500 Club ticket</h2>
-            <p>The simplest way to give. A year's membership enters you into monthly prize draws, and at least 20% goes to the hall and grounds.</p>
-            <a className="text-link" href={href('support/500-club')}>Join the 500 Club <Arrow /></a>
-          </article>
-          <article className="info-card">
-            <h2 className="h3">A donation of any size</h2>
-            <p>We've secured several grants for hall improvements, and donations of any size help us go further. To give, contact Neal Courtney, Chair.</p>
-            <p className="small"><a href="mailto:chair.crc@outlook.com">chair.crc@outlook.com</a><br /><a href="tel:07831677037">07831 677037</a></p>
-          </article>
-          <article className="info-card">
-            <h2 className="h3">Come to bonfire night</h2>
-            <p>Our bonfire and fireworks display is a major fundraiser for the hall. Every ticket helps.</p>
-            <a className="text-link" href={href('whats-on/upcoming')}>Upcoming events <Arrow /></a>
-          </article>
+        <div className="wrap">
+          <div className="donate-lead">
+            <div>
+              <p className="eyebrow">Donate</p>
+              <h2 className="display sm">A donation <span className="thin">of any size</span></h2>
+              <p className="lede">We've secured several grants for hall improvements, and donations of any size help us go further. Every pound goes to running and improving the hall and recreation ground.</p>
+            </div>
+            <aside className="donate-contact">
+              <p>To give, or to ask about any of these ways to donate, contact {COMMITTEE_CONTACT.name}, our {COMMITTEE_CONTACT.role}.</p>
+              <a className="btn btn-dark" href={`mailto:${COMMITTEE_CONTACT.email}?subject=Donation%20to%20Chieveley%20Village%20Hall`}>Email {COMMITTEE_CONTACT.email}</a>
+            </aside>
+          </div>
+          <div className="three-col">
+            <article className="info-card">
+              <h3 className="h3">One-off or monthly</h3>
+              <p>Give a single donation whenever suits you, or set up a regular monthly donation to support the hall all year round.</p>
+            </article>
+            <article className="info-card">
+              <h3 className="h3">A gift in your will</h3>
+              <p>Leaving a gift to the hall in your will helps keep it at the heart of village life for generations to come. Any amount, large or small, makes a lasting difference.</p>
+            </article>
+            <article className="info-card">
+              <h3 className="h3">Other ways to help</h3>
+              <p>Join the <a href={href('support/500-club')}>500 Club</a> from {CLUB_500.ticket} a year, or buy a ticket for our bonfire and fireworks night, a major fundraiser for the hall.</p>
+              <a className="text-link" href={href('whats-on/upcoming')}>Upcoming events <Arrow /></a>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -59,7 +69,7 @@ export default function Support() {
               <ul className="tick-list">
                 <li>Membership runs 1 July to 30 June</li>
                 <li>Members must be 16 or over</li>
-                <li>You can hold more than one ticket</li>
+                <li>Multiple tickets are available to buy, and each one is entered into every draw</li>
                 <li>At least 20% of proceeds go to running and improving the hall and grounds</li>
               </ul>
             </article>
@@ -124,19 +134,6 @@ export default function Support() {
             <p className="muted small">Or have a chat with one of us in person. You can read how the hall is run on our <a href={href('about')}>About</a> page.</p>
           </div>
           <Photo label="Volunteers at the hall" shape="tall" tone="mint" />
-        </div>
-      </section>
-
-      {/* ---------- Dedicate a bench ---------- */}
-      <section id="bench" className="band band-pink">
-        <div className="wrap two-col center">
-          <Photo label="Bench on the recreation ground" shape="soft" tone="pink" />
-          <div>
-            <p className="eyebrow">Benches</p>
-            <h2 className="display sm">Dedicate <span className="thin">a bench</span></h2>
-            <p>Details of our benches appeal are coming soon. To ask about dedicating a bench, contact the hall.</p>
-            <a className="btn btn-dark" href={`mailto:${SITE.email}`}>Ask about benches</a>
-          </div>
         </div>
       </section>
     </>

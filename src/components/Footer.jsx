@@ -1,12 +1,16 @@
 import { SITE } from '../data/content.js';
 import { href } from '../router.js';
 import { Arrow } from './Bits.jsx';
+import logo from '../assets/logo.jpg';
 
 export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="wrap footer-top">
-        <p className="footer-big">Bringing community <span className="thin">together.</span></p>
+        <div className="footer-brand">
+          <a className="footer-logo" href={href('home')} aria-label="Chieveley Village Hall home"><img src={logo} alt="" /></a>
+          <p className="footer-big">Bringing community <span className="thin">together.</span></p>
+        </div>
         <a className="btn btn-outline-light" href={href('hire/how-to-book')}>Book the hall <Arrow /></a>
       </div>
       <div className="wrap footer-grid">

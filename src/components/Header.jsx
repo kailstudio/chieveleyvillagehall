@@ -62,7 +62,6 @@ export default function Header({ page, section }) {
       <div className="bar">
         <a href={href('home')} className="brand" aria-label="Chieveley Village Hall home">
           <span className="brand-mark"><img src={logo} alt="" /></span>
-          <span className="brand-name">Chieveley<br />Village Hall</span>
         </a>
 
         <nav className={`nav ${open ? 'is-open' : ''}`} aria-label="Main">

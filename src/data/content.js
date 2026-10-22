@@ -3,6 +3,9 @@
 // Content taken from www.chieveleyvillagehall.org (October 2026).
 // ---------------------------------------------------------------------------
 
+// Our own photos (in src/assets/photos)
+import fourWaysIn from '../assets/photos/four-ways-in.jpg';
+
 export const SITE = {
   name: 'Chieveley Village Hall',
   fullName: 'Chieveley Village Hall & Recreational Centre',
@@ -36,7 +39,7 @@ export const NAV = [
   },
   {
     label: 'Support us', to: 'support',
-    children: [['donate', 'Donate'], ['500-club', '500 Club'], ['winners', '500 Club winners'], ['volunteer', 'Volunteer'], ['bench', 'Dedicate a bench']],
+    children: [['donate', 'Donate'], ['500-club', '500 Club'], ['winners', '500 Club winners'], ['volunteer', 'Volunteer']],
   },
   {
     label: 'About', to: 'about',
@@ -45,7 +48,7 @@ export const NAV = [
 ];
 
 // Where the two header buttons go.
-export const CTA = { book: 'hire/how-to-book', donate: 'support/500-club' };
+export const CTA = { book: 'hire/how-to-book', donate: 'support/donate' };
 
 // Old addresses -> new ones, so existing links and bookmarks still land
 // on the right section.
@@ -66,7 +69,8 @@ export const REDIRECTS = {
   fundraising: 'support',
   'fundraising/help': 'support/volunteer',
   'fundraising/fireworks': 'whats-on/upcoming',
-  'fundraising/benches': 'support/bench',
+  'fundraising/benches': 'support/donate',
+  'support/bench': 'support/donate',
   '500-club': 'support/500-club',
   '500-club/join': 'support/500-club',
   '500-club/winners': 'support/winners',
@@ -105,10 +109,12 @@ export const BOOKING_STEPS = [
   },
 ];
 
-// Regular classes. `day` is filled where the current site states it.
+// Regular classes, shown A–Z on What's on (sorted automatically below, so new
+// classes can be added anywhere in this list). `day` is filled where the
+// current site states it.
 // `contact` matches a `group` in CONTACTS below, so each class card shows
 // its organiser's details.
-export const CLASSES = [
+const CLASS_LIST = [
   { name: 'Chieveley Cricket Club', who: '', day: '', category: 'Sport', link: 'https://chieveley.play-cricket.com/web_pages/join_us' },
   { name: 'Social time with Cuppa & Cake', contact: 'Cuppa & Cake', who: '', day: 'Weekly', category: 'Social' },
   { name: 'Puppy Training with Michelle', contact: 'Puppy Training', who: 'Michelle', day: '', category: 'Dogs' },
@@ -126,6 +132,7 @@ export const CLASSES = [
   { name: 'Chieveley WI', contact: 'Chieveley WI', who: '', day: 'Second Wednesday afternoon of the month', category: 'Social' },
   { name: 'Ecstatic Dance with Jayne', contact: 'Ecstatic Dance with Jayne', who: 'Jayne', day: '', category: 'Dance' },
 ];
+export const CLASSES = [...CLASS_LIST].sort((a, b) => a.name.localeCompare(b.name, 'en-GB'));
 
 // Organiser contacts, shown on each class card on What's on.
 export const CONTACTS = [
@@ -210,6 +217,16 @@ export const GOV_DOCS = [
   { title: 'Fire Safety Policy', note: 'Issue 1, February 2025', url: 'https://www.chieveleyvillagehall.org/_files/ugd/dcef2e_daffb3c5f2464a2890104406f8c7ecfc.pdf' },
 ];
 
+// Committee contact (About › Contact us, and donations on Support us).
+export const COMMITTEE_CONTACT = { name: 'Rebecca Couzens', role: 'Secretary', email: 'secretary.crc@outlook.com' };
+
+// The Chair's email, shown only under Vision 2050.
+export const CHAIR_EMAIL = 'chair.crc@outlook.com';
+
+// Meet the team. PHOTOS: put each person's photo in src/assets/team/, named
+// after them in lower case with hyphens (e.g. neal-courtney.jpg, .png or
+// .webp). It replaces their initials automatically. A square photo of the
+// head and shoulders works best. `bio` pops up when you hover over a name.
 export const TEAM = [
   { name: 'Neal Courtney', role: 'Chair of Trustees', elected: true, bio: 'Chair since June 2023. Background in insurance-related services and consultancy.' },
   { name: 'Phil Kinzett-Evans', role: 'Treasurer', elected: true, bio: 'Background in accountancy and taxation.' },
@@ -252,7 +269,11 @@ export const FACILITY_PHOTOS = [
 // here, or put the file in src/assets/, import it at the top of this file and
 // use that instead. Keys match the `label` on each <Photo />.
 // ---------------------------------------------------------------------------
-export const img = (id, w = 1400) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
+// A photo imported from src/assets (a file path or inlined image) is used as
+// it is; anything else is treated as an Unsplash photo id.
+export const img = (id, w = 1400) => (/^(https?:|data:|blob:|\/|\.)/.test(id)
+  ? id
+  : `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`);
 
 const U = {
   countryside: 'photo-1541598023388-9a08906153a7',   // Colin Watts – foggy morning in the countryside
@@ -288,14 +309,14 @@ const U = {
 
 export const PHOTOS = {
   // Page heroes
-  'hero-home': U.countryside,
+  'hero-home': U.hall,                 // inside the hall
   'hero-whats-on': U.yoga,
-  'hero-hire': U.hall,
-  'hero-support': U.bench,
+  'hero-hire': U.wedding,
+  'hero-support': U.bonfire,
   'hero-about': U.villageSpire,
   'hero-404': U.villageSun,
   // Home
-  'Find: whats-on': U.ballroom,
+  'Find: whats-on': fourWaysIn,        // our own photo: friends greeting in the hall
   'Find: hire': U.wedding,
   'Find: support': U.bonfire,
   'Find: about': U.villageSpire,
@@ -341,4 +362,67 @@ export const PHOTOS = {
   'Volunteers at the hall': U.community,
   'Bench on the recreation ground': U.bench,
   '5 November fireworks': U.fireworks,
+};
+
+// ---------------------------------------------------------------------------
+// Hand-drawn doodles over the photos. Keys match the photo labels above (and
+// `event-<id>` for events). Each entry is a list of drawings:
+//   [drawing, left %, top %, width %, rotate°, hide on phones?, [left, top, width] on phones]
+// Positions are percentages of the photo. Drawings live in
+// src/components/doodleArt.js: bunting, lights, burst, burst2, sparkles,
+// flowers, balloons, rosette, paws, cup, cake, heart, speech, sun, music,
+// cricket, swing, tree, xtree, glasses, table, flames, hall, walker,
+// stretcher, arrow, sprig, people. Delete an entry to show the photo on its own.
+// ---------------------------------------------------------------------------
+export const DOODLES = {
+  // Page heroes: kept to the top right, clear of the headings
+  // Home: drawn in as you scroll the pinned hero (see HomeHero.jsx)
+  'hero-home': [['bunting', 19, 10, 30, -2, true], ['bunting', 51, 10, 30, 2, true], ['people', 39, 61, 25, 0, false, [6, 20, 88]], ['sparkles', 89, 17, 5, 0, true]],
+  'hero-whats-on': [['music', 68, 19, 12], ['cup', 85, 30, 8, 6, true], ['sparkles', 84, 14, 6]],
+  'hero-hire': [['lights', 48, 12, 48, -2], ['table', 76, 30, 17, 0, true], ['sparkles', 62, 32, 5, 0, true]],
+  'hero-support': [['burst', 68, 13, 14], ['burst2', 84, 27, 10], ['sparkles', 60, 32, 6, 0, true]],
+  'hero-about': [['speech', 68, 18, 16], ['tree', 88, 21, 8, 0, true], ['sun', 59, 14, 7, 0, true]],
+  'hero-404': [['walker', 76, 16, 11], ['arrow', 60, 34, 12, -6, true]],
+  'Donate band': [['lights', 4, 11, 56, 1], ['heart', 80, 15, 9, -8, true]],
+  // Home › Find your way
+  'Find: whats-on': [['music', 64, 10, 13], ['sparkles', 81, 22, 7]],
+  'Find: hire': [['lights', 6, 6, 46, -2], ['glasses', 66, 10, 15]],
+  'Find: support': [['burst', 62, 5, 15], ['burst2', 80, 18, 11]],
+  'Find: about': [['speech', 64, 10, 17], ['hall', 10, 12, 17, 0, true]],
+  // Photos
+  'Main hall': [['lights', 4, 5, 92]],
+  'Main hall kitchen': [['cup', 58, 38, 32, 6]],
+  'Club room': [['table', 48, 40, 46]],
+  'Club room, from entrance': [['table', 48, 40, 46]],
+  'Club room kitchen & bar': [['glasses', 52, 36, 42]],
+  'Club room kitchen & bar area': [['glasses', 52, 36, 42]],
+  'Grounds & recreation ground': [['cricket', 50, 40, 46]],
+  'Playground & parking': [['swing', 50, 38, 44]],
+  'Party in the hall': [['balloons', 66, 8, 26], ['sparkles', 48, 10, 14]],
+  'Rhodesian Ridgeback show': [['rosette', 66, 10, 24, 8], ['paws', 6, 58, 22]],
+  'Volunteers at the hall': [['heart', 62, 8, 28, -6], ['sparkles', 12, 12, 16]],
+  'The Coffee Stop': [['cup', 56, 10, 32, 6], ['cake', 8, 64, 34, -4]],
+  'Chieveley Village Hall': [['hall', 44, 30, 50]],
+  Cricketers: [['cricket', 50, 36, 46]],
+  'Watching cricket': [['sun', 66, 6, 26]],
+  'Ladies night': [['glasses', 52, 10, 42]],
+  'Gardening Club': [['flowers', 30, 44, 64]],
+  'Children in the playground watching fireworks': [['burst', 50, 4, 44]],
+  'Fun in the snow': [['sparkles', 50, 8, 40]],
+  'Cold Ash FC ready to strike': [['burst2', 62, 6, 32]],
+  'Things get hot in the kitchen': [['flames', 58, 30, 36]],
+  'The Club Room bar': [['glasses', 52, 30, 42]],
+  'Christmas lunch': [['xtree', 66, 8, 26]],
+  'Themed party': [['balloons', 64, 8, 26]],
+  'Pet show': [['rosette', 66, 8, 24, 8], ['paws', 6, 60, 22]],
+  'Family celebration': [['bunting', 4, 4, 92]],
+  'Village event': [['bunting', 4, 4, 92]],
+  'Community gathering': [['speech', 46, 8, 48]],
+  'Panto night': [['music', 10, 12, 30], ['sparkles', 62, 10, 28]],
+  'Summer on the grounds': [['sun', 64, 6, 28]],
+  // Events (What's on › Upcoming)
+  'event-fireworks': [['burst', 52, 6, 42], ['burst2', 26, 54, 22]],
+  'event-agm': [['speech', 44, 8, 50]],
+  'event-christmas-market': [['xtree', 66, 10, 26], ['sparkles', 14, 10, 18]],
+  'event-coffee-stop': [['cup', 56, 14, 34, 6]],
 };

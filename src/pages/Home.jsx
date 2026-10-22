@@ -2,12 +2,14 @@ import { useState } from 'react';
 import { SITE, COFFEE_STOP, CLASSES, REVIEWS, CLUB_500, CTA, EVENTS, PHOTOS, img } from '../data/content.js';
 import { href } from '../router.js';
 import { Arrow, Photo } from '../components/Bits.jsx';
+import Doodles from '../components/Doodles.jsx';
+import HomeHero from '../components/HomeHero.jsx';
 
 // One way into each of the four sections. Hovering swaps the photo behind.
 const SECTIONS = [
   { to: 'whats-on', label: "What's on", photo: 'Find: whats-on', kicker: 'Classes · events', text: 'Weekly classes with their organisers, the Coffee Stop, the Christmas market and bonfire night.', cta: 'See what’s on' },
   { to: 'hire', label: 'Hire the hall', photo: 'Find: hire', kicker: 'Rooms · prices · booking', text: 'Parties, weddings, meetings and dog shows. Check availability up to a year ahead.', cta: 'Plan your booking' },
-  { to: 'support', label: 'Support us', photo: 'Find: support', kicker: '500 Club · volunteering', text: 'Join the 500 Club, lend a hand at an event or dedicate a bench.', cta: 'Help your hall' },
+  { to: 'support', label: 'Support us', photo: 'Find: support', kicker: 'Donations · 500 Club · volunteering', text: 'Make a donation, join the 500 Club or lend a hand at an event.', cta: 'Help your hall' },
   { to: 'about', label: 'About', photo: 'Find: about', kicker: 'A registered charity', text: 'Meet the committee, the next meeting, our documents and Vision 2050.', cta: 'How we’re run' },
 ];
 
@@ -20,47 +22,7 @@ export default function Home() {
 
   return (
     <>
-      {/* ---------- Hero ---------- */}
-      <section className="home-hero">
-        <img className="page-hero-img" src={img(PHOTOS['hero-home'], 2400)} alt="" fetchpriority="high" />
-        <div className="page-hero-shade" aria-hidden="true" />
-        <div className="wrap home-hero-inner">
-          <p className="eyebrow light">High Street, Chieveley · West Berkshire</p>
-          <h1 className="mega">Chieveley <span className="thin">Village Hall</span></h1>
-
-          <div className="home-hero-foot">
-            <div className="home-hero-copy">
-              <p className="light">A hall for birthdays, family gatherings and weddings, weekly classes for every age, and grounds that host dog shows all year round.</p>
-              <div className="hero-actions">
-                <a className="btn btn-solid-light" href={href(CTA.book)}>Book the hall <Arrow /></a>
-                <a className="btn btn-outline-light" href={href(CTA.donate)}>Donate to your hall</a>
-              </div>
-            </div>
-
-            <a className="groups-pill glass" href={href('whats-on/classes')}>
-              <span className="dots" aria-hidden="true"><i /><i /><i /></span>
-              <span><strong>{CLASSES.length} groups</strong><br />meet here every week</span>
-            </a>
-
-            <div className="hero-cards">
-              <a className="glass hero-card" href={href('home/coffee-stop')}>
-                <img src={img(PHOTOS['The Coffee Stop'], 600)} alt="" />
-                <span className="hc-body">
-                  <span className="hc-k">Back {COFFEE_STOP.start}</span>
-                  <span className="hc-t">The Coffee Stop</span>
-                </span>
-              </a>
-              {next && (
-                <a className="solid-card" href={href('whats-on/upcoming')}>
-                  <span className="hc-k">Next up · {next.when.split('·')[0].trim()}</span>
-                  <span className="hc-t">{next.title}</span>
-                  <span className="btn btn-dark btn-block">View details</span>
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
+      <HomeHero next={next} />
 
       {/* ---------- Intro + numbers ---------- */}
       <section className="section intro">
@@ -88,6 +50,7 @@ export default function Home() {
         {SECTIONS.map((s, i) => (
           <img key={s.to} className={`finder-img ${i === active ? 'on' : ''}`} src={img(PHOTOS[s.photo], 2000)} alt="" loading="lazy" />
         ))}
+        <Doodles key={active} k={SECTIONS[active].photo} className="hero-doodles" />
         <div className="finder-panel">
           <div className="wrap finder-grid">
             <div className="finder-title">
@@ -158,14 +121,15 @@ export default function Home() {
       <section className="donate-band">
         <img className="page-hero-img" src={img(PHOTOS['Donate band'], 2400)} alt="" loading="lazy" />
         <div className="page-hero-shade" aria-hidden="true" />
+        <Doodles k="Donate band" className="hero-doodles" />
         <div className="wrap donate">
           <h2 className="mega mega-sm">Keep the <span className="thin">lights on.</span></h2>
           <div className="glass donate-card">
             <p className="eyebrow light">Support your hall</p>
             <p className="light">Join the 500 Club for {CLUB_500.ticket} a year. You're entered into monthly prize draws, and at least 20% of every ticket goes to running and improving the hall and recreation ground.</p>
             <div className="hero-actions">
-              <a className="btn btn-solid-light" href={href(CTA.donate)}>Join the 500 Club <Arrow /></a>
-              <a className="btn btn-outline-light" href={href('support/volunteer')}>Volunteer</a>
+              <a className="btn btn-solid-light" href={href('support/500-club')}>Join the 500 Club <Arrow /></a>
+              <a className="btn btn-outline-light" href={href(CTA.donate)}>Make a donation</a>
             </div>
           </div>
         </div>

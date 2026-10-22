@@ -1,6 +1,16 @@
-import { SITE, GOV_DOCS, TEAM, CLUB_500 } from '../data/content.js';
+import { SITE, GOV_DOCS, TEAM, CLUB_500, COMMITTEE_CONTACT, CHAIR_EMAIL } from '../data/content.js';
 import { href } from '../router.js';
 import { PageHeader, JumpLinks, Arrow } from '../components/Bits.jsx';
+
+// Team photos: any image in src/assets/team/ named after the person
+// (e.g. neal-courtney.jpg) replaces their initials.
+const TEAM_PHOTOS = import.meta.glob('../assets/team/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', { eager: true, import: 'default' });
+const slug = (name) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const photoFor = (name) => {
+  const key = Object.keys(TEAM_PHOTOS).find((p) => p.split('/').pop().replace(/\.[^.]+$/, '').toLowerCase() === slug(name));
+  return key ? TEAM_PHOTOS[key] : null;
+};
+const initials = (name) => name.split(' ').map((n) => n[0]).join('').slice(0, 2);
 
 export default function About() {
   return (
@@ -13,18 +23,30 @@ export default function About() {
       <section id="team" className="section">
         <div className="wrap">
           <h2 className="display sm">Meet <span className="thin">the team</span></h2>
-          <p className="muted">Our Hall Executive Committee. Around 70 people support the hall in total.</p>
+          <p className="muted">Our Hall Executive Committee. Around 70 people support the hall in total. Hover over a name to read more.</p>
           <ul className="team-grid">
-            {TEAM.map((t) => (
-              <li key={t.name} className="member">
-                <span className="avatar" aria-hidden="true">{t.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}</span>
-                <div>
-                  <h3>{t.name}</h3>
-                  <p className="role">{t.role}{t.elected && <span className="tag">Elected</span>}</p>
-                  {t.bio && <p className="muted small">{t.bio}</p>}
-                </div>
-              </li>
-            ))}
+            {TEAM.map((t) => {
+              const photo = photoFor(t.name);
+              const bioId = `bio-${slug(t.name)}`;
+              return (
+                <li key={t.name} className={`member ${t.bio ? 'has-bio' : ''}`} tabIndex={t.bio ? 0 : undefined}
+                  aria-describedby={t.bio ? bioId : undefined}>
+                  <span className={`avatar ${photo ? 'has-photo' : ''}`} aria-hidden="true">
+                    {photo ? <img src={photo} alt="" loading="lazy" /> : initials(t.name)}
+                  </span>
+                  <div>
+                    <h3>{t.name}</h3>
+                    <p className="role">{t.role}{t.elected && <span className="tag">Elected</span>}</p>
+                  </div>
+                  {t.bio && (
+                    <div className="bio-pop" id={bioId} role="tooltip">
+                      <p className="bio-name">{t.name}</p>
+                      <p>{t.bio}</p>
+                    </div>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </div>
       </section>
@@ -88,7 +110,7 @@ export default function About() {
             </article>
           </div>
           <div className="note-band">
-            <p>Questions about Vision 2050? Contact Neal Courtney, Chair, on <a href="tel:07831677037">07831 677037</a> or <a href="mailto:chair.crc@outlook.com">chair.crc@outlook.com</a>.</p>
+            <p>Questions about Vision 2050? Email Neal Courtney, Chair, at <a href={`mailto:${CHAIR_EMAIL}`}>{CHAIR_EMAIL}</a>.</p>
             <a className="btn btn-donate" href={href('support')}>Support us</a>
           </div>
         </div>
@@ -106,8 +128,8 @@ export default function About() {
             </article>
             <article className="info-card">
               <h3 className="h3">The committee</h3>
-              <p>Neal Courtney, Chair of Trustees</p>
-              <p className="small"><a href="mailto:chair.crc@outlook.com">chair.crc@outlook.com</a><br /><a href="tel:07831677037">07831 677037</a></p>
+              <p>{COMMITTEE_CONTACT.name}, {COMMITTEE_CONTACT.role}</p>
+              <p className="small"><a href={`mailto:${COMMITTEE_CONTACT.email}`}>{COMMITTEE_CONTACT.email}</a></p>
               <p className="small">500 Club: <a href={`mailto:${CLUB_500.email}`}>{CLUB_500.email}</a></p>
             </article>
             <article className="info-card">
