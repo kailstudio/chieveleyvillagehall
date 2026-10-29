@@ -3,9 +3,6 @@
 // Content taken from www.chieveleyvillagehall.org (October 2026).
 // ---------------------------------------------------------------------------
 
-// Our own photos (in src/assets/photos)
-import fourWaysIn from '../assets/photos/four-ways-in.jpg';
-
 export const SITE = {
   name: 'Chieveley Village Hall',
   fullName: 'Chieveley Village Hall & Recreational Centre',
@@ -269,11 +266,7 @@ export const FACILITY_PHOTOS = [
 // here, or put the file in src/assets/, import it at the top of this file and
 // use that instead. Keys match the `label` on each <Photo />.
 // ---------------------------------------------------------------------------
-// A photo imported from src/assets (a file path or inlined image) is used as
-// it is; anything else is treated as an Unsplash photo id.
-export const img = (id, w = 1400) => (/^(https?:|data:|blob:|\/|\.)/.test(id)
-  ? id
-  : `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`);
+export const img = (id, w = 1400) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 const U = {
   countryside: 'photo-1541598023388-9a08906153a7',   // Colin Watts – foggy morning in the countryside
@@ -309,14 +302,14 @@ const U = {
 
 export const PHOTOS = {
   // Page heroes
-  'hero-home': U.hall,                 // inside the hall
+  'hero-home': U.countryside,
   'hero-whats-on': U.yoga,
-  'hero-hire': U.wedding,
+  'hero-hire': U.hall,
   'hero-support': U.bonfire,
   'hero-about': U.villageSpire,
   'hero-404': U.villageSun,
   // Home
-  'Find: whats-on': fourWaysIn,        // our own photo: friends greeting in the hall
+  'Find: whats-on': U.ballroom,
   'Find: hire': U.wedding,
   'Find: support': U.bonfire,
   'Find: about': U.villageSpire,
@@ -362,67 +355,4 @@ export const PHOTOS = {
   'Volunteers at the hall': U.community,
   'Bench on the recreation ground': U.bench,
   '5 November fireworks': U.fireworks,
-};
-
-// ---------------------------------------------------------------------------
-// Hand-drawn doodles over the photos. Keys match the photo labels above (and
-// `event-<id>` for events). Each entry is a list of drawings:
-//   [drawing, left %, top %, width %, rotate°, hide on phones?, [left, top, width] on phones]
-// Positions are percentages of the photo. Drawings live in
-// src/components/doodleArt.js: bunting, lights, burst, burst2, sparkles,
-// flowers, balloons, rosette, paws, cup, cake, heart, speech, sun, music,
-// cricket, swing, tree, xtree, glasses, table, flames, hall, walker,
-// stretcher, arrow, sprig, people. Delete an entry to show the photo on its own.
-// ---------------------------------------------------------------------------
-export const DOODLES = {
-  // Page heroes: kept to the top right, clear of the headings
-  // Home: drawn in as you scroll the pinned hero (see HomeHero.jsx)
-  'hero-home': [['bunting', 19, 10, 30, -2, true], ['bunting', 51, 10, 30, 2, true], ['people', 39, 61, 25, 0, false, [6, 20, 88]], ['sparkles', 89, 17, 5, 0, true]],
-  'hero-whats-on': [['music', 68, 19, 12], ['cup', 85, 30, 8, 6, true], ['sparkles', 84, 14, 6]],
-  'hero-hire': [['lights', 48, 12, 48, -2], ['table', 76, 30, 17, 0, true], ['sparkles', 62, 32, 5, 0, true]],
-  'hero-support': [['burst', 68, 13, 14], ['burst2', 84, 27, 10], ['sparkles', 60, 32, 6, 0, true]],
-  'hero-about': [['speech', 68, 18, 16], ['tree', 88, 21, 8, 0, true], ['sun', 59, 14, 7, 0, true]],
-  'hero-404': [['walker', 76, 16, 11], ['arrow', 60, 34, 12, -6, true]],
-  'Donate band': [['lights', 4, 11, 56, 1], ['heart', 80, 15, 9, -8, true]],
-  // Home › Find your way
-  'Find: whats-on': [['music', 64, 10, 13], ['sparkles', 81, 22, 7]],
-  'Find: hire': [['lights', 6, 6, 46, -2], ['glasses', 66, 10, 15]],
-  'Find: support': [['burst', 62, 5, 15], ['burst2', 80, 18, 11]],
-  'Find: about': [['speech', 64, 10, 17], ['hall', 10, 12, 17, 0, true]],
-  // Photos
-  'Main hall': [['lights', 4, 5, 92]],
-  'Main hall kitchen': [['cup', 58, 38, 32, 6]],
-  'Club room': [['table', 48, 40, 46]],
-  'Club room, from entrance': [['table', 48, 40, 46]],
-  'Club room kitchen & bar': [['glasses', 52, 36, 42]],
-  'Club room kitchen & bar area': [['glasses', 52, 36, 42]],
-  'Grounds & recreation ground': [['cricket', 50, 40, 46]],
-  'Playground & parking': [['swing', 50, 38, 44]],
-  'Party in the hall': [['balloons', 66, 8, 26], ['sparkles', 48, 10, 14]],
-  'Rhodesian Ridgeback show': [['rosette', 66, 10, 24, 8], ['paws', 6, 58, 22]],
-  'Volunteers at the hall': [['heart', 62, 8, 28, -6], ['sparkles', 12, 12, 16]],
-  'The Coffee Stop': [['cup', 56, 10, 32, 6], ['cake', 8, 64, 34, -4]],
-  'Chieveley Village Hall': [['hall', 44, 30, 50]],
-  Cricketers: [['cricket', 50, 36, 46]],
-  'Watching cricket': [['sun', 66, 6, 26]],
-  'Ladies night': [['glasses', 52, 10, 42]],
-  'Gardening Club': [['flowers', 30, 44, 64]],
-  'Children in the playground watching fireworks': [['burst', 50, 4, 44]],
-  'Fun in the snow': [['sparkles', 50, 8, 40]],
-  'Cold Ash FC ready to strike': [['burst2', 62, 6, 32]],
-  'Things get hot in the kitchen': [['flames', 58, 30, 36]],
-  'The Club Room bar': [['glasses', 52, 30, 42]],
-  'Christmas lunch': [['xtree', 66, 8, 26]],
-  'Themed party': [['balloons', 64, 8, 26]],
-  'Pet show': [['rosette', 66, 8, 24, 8], ['paws', 6, 60, 22]],
-  'Family celebration': [['bunting', 4, 4, 92]],
-  'Village event': [['bunting', 4, 4, 92]],
-  'Community gathering': [['speech', 46, 8, 48]],
-  'Panto night': [['music', 10, 12, 30], ['sparkles', 62, 10, 28]],
-  'Summer on the grounds': [['sun', 64, 6, 28]],
-  // Events (What's on › Upcoming)
-  'event-fireworks': [['burst', 52, 6, 42], ['burst2', 26, 54, 22]],
-  'event-agm': [['speech', 44, 8, 50]],
-  'event-christmas-market': [['xtree', 66, 10, 26], ['sparkles', 14, 10, 18]],
-  'event-coffee-stop': [['cup', 56, 14, 34, 6]],
 };

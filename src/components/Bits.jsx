@@ -1,6 +1,5 @@
 import { SITE, PHOTOS, img } from '../data/content.js';
 import { href } from '../router.js';
-import Doodles from './Doodles.jsx';
 
 // Full-bleed photo hero used at the top of every inner page.
 // `photo` is a key in PHOTOS (content.js).
@@ -10,7 +9,6 @@ export function PageHeader({ eyebrow, title, accent, intro, children, photo = 'h
     <section className="page-hero">
       {id && <img className="page-hero-img" src={img(id, 2400)} alt="" fetchpriority="high" />}
       <div className="page-hero-shade" aria-hidden="true" />
-      <Doodles k={photo} className="hero-doodles" />
       <div className="wrap page-hero-inner">
         {eyebrow && <p className="eyebrow light">{eyebrow}</p>}
         <h1 className="display xl light">
@@ -27,8 +25,7 @@ export function PageHeader({ eyebrow, title, accent, intro, children, photo = 'h
 
 // Photo slot. Uses `src` if given, otherwise the photo in PHOTOS for this label.
 // Without either, a quiet labelled placeholder shows where a photo should go.
-// `doodle` picks the hand-drawn overlay (DOODLES in content.js); defaults to the label.
-export function Photo({ src, label, shape = 'rect', className = '', w = 1200, doodle }) {
+export function Photo({ src, label, shape = 'rect', className = '', w = 1200 }) {
   const id = PHOTOS[label];
   const url = src || (id && img(id, w));
   return (
@@ -38,7 +35,6 @@ export function Photo({ src, label, shape = 'rect', className = '', w = 1200, do
       ) : (
         <div className="photo-ph" role="img" aria-label={`Photo placeholder: ${label}`}><span>{label}</span></div>
       )}
-      <Doodles k={doodle || label} />
     </figure>
   );
 }

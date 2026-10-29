@@ -77,7 +77,7 @@ export default function WhatsOn() {
               {upcoming.map((e) => (
                 <li key={e.id} id={`event-${e.id}`} className="event">
                   <div className="event-media">
-                    <Photo src={PHOTOS[`event-${e.id}`] && img(PHOTOS[`event-${e.id}`], 900)} label={e.title} doodle={`event-${e.id}`} />
+                    <Photo src={PHOTOS[`event-${e.id}`] && img(PHOTOS[`event-${e.id}`], 900)} label={e.title} />
                     <div className="event-date glass" aria-hidden="true">
                       <span className="ed-day">{e.day}</span>
                       <span className="ed-mon">{e.month}</span>
