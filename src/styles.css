@@ -1,21 +1,26 @@
 /* ==========================================================================
    Chieveley Village Hall
-   Warm stone, deep brown and full-bleed photography. Inter Tight in light
+   Timberwolf stone, moss and kombu greens, and full-bleed photography. Inter Tight in light
    weights for large headings, frosted-glass panels over photos, hairline
    grids, thin pill buttons. Every hover is a slow, soft fade.
    ========================================================================== */
 :root {
-  --stone: #efebe5;        /* page */
-  --stone-2: #e6e0d7;      /* panels */
-  --paper: #f8f6f2;
-  --ink: #2b211b;          /* deep brown text */
-  --brown: #45301f;        /* solid blocks */
-  --brown-2: #5b4331;
-  --muted: #7b6e64;
-  --line: rgba(43, 33, 27, 0.16);
+  /* Palette: Timberwolf #DFDDD1, Olivine #9FB878, Palm Leaf #799851,
+     Dark Moss Green #47622A, Kombu Green #374426. The --brown names are
+     kept from the first version; they now hold the greens. */
+  --stone: #ecebe3;        /* page: light Timberwolf */
+  --stone-2: #dfddd1;      /* panels: Timberwolf */
+  --paper: #f7f6f0;
+  --ink: #2c3620;          /* text: deep Kombu */
+  --brown: #47622a;        /* solid blocks: Dark Moss Green */
+  --brown-2: #374426;      /* hover: Kombu Green */
+  --olivine: #9fb878;      /* accent */
+  --palm: #799851;
+  --muted: #626b56;
+  --line: rgba(44, 54, 32, 0.16);
   --line-light: rgba(255, 255, 255, 0.35);
   --glass: rgba(255, 255, 255, 0.16);
-  --glass-strong: rgba(248, 246, 242, 0.82);
+  --glass-strong: rgba(247, 246, 240, 0.82);
 
   --font: 'Inter Tight', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
@@ -26,7 +31,7 @@
   --gutter: clamp(16px, 4vw, 48px);
   --ease: cubic-bezier(.25, .8, .25, 1);
   --soft: .6s var(--ease);
-  --shadow: 0 1px 2px rgba(43,33,27,.05), 0 20px 50px -24px rgba(43,33,27,.35);
+  --shadow: 0 1px 2px rgba(44,54,32,.05), 0 20px 50px -24px rgba(44,54,32,.35);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -118,7 +123,7 @@ a:hover .arrow, a:hover > .arrow { transform: translate(2px, -2px); }
   border: 1px solid rgba(255,255,255,.28); color: #fff;
   transition: background-color var(--soft), border-color var(--soft), color var(--soft), box-shadow var(--soft);
 }
-.site-header.is-solid .bar { background: rgba(248,246,242,.86); border-color: var(--line); color: var(--ink); box-shadow: var(--shadow); }
+.site-header.is-solid .bar { background: rgba(247,246,240,.86); border-color: var(--line); color: var(--ink); box-shadow: var(--shadow); }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .brand-mark { width: 46px; height: 46px; border-radius: 50%; background: #fff; display: grid; place-items: center; overflow: hidden; flex: none; }
 .brand-mark img { width: 40px; height: auto; mix-blend-mode: multiply; }
@@ -173,7 +178,7 @@ a:hover .arrow, a:hover > .arrow { transform: translate(2px, -2px); }
 .submenu li { opacity: 0; }
 .menu-open > .submenu li { opacity: 1; transition: opacity .6s ease; transition-delay: calc(.05s + var(--i) * .04s); }
 .submenu a { display: block; padding: 11px 14px; border-radius: 14px; text-decoration: none; font-size: 14.5px; white-space: nowrap; transition: background-color .5s ease; }
-.submenu a:hover, .submenu a:focus-visible { background: rgba(43,33,27,.07); }
+.submenu a:hover, .submenu a:focus-visible { background: rgba(44,54,32,.07); }
 
 @media (max-width: 960px) {
   .brand-name { display: none; }
@@ -202,10 +207,10 @@ a:hover .arrow, a:hover > .arrow { transform: translate(2px, -2px); }
 }
 
 /* ---------- Photo heroes ---------- */
-.page-hero, .home-hero, .donate-band { position: relative; overflow: hidden; isolation: isolate; color: #fff; background: #3a3029; }
+.page-hero, .home-hero, .donate-band { position: relative; overflow: hidden; isolation: isolate; color: #fff; background: #374426; }
 .page-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; animation: settle 2.4s var(--ease) both; }
 @keyframes settle { from { transform: scale(1.06); opacity: 0; } to { transform: none; opacity: 1; } }
-.page-hero-shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(30,22,16,.45) 0%, rgba(30,22,16,.08) 38%, rgba(30,22,16,.18) 62%, rgba(30,22,16,.62) 100%); }
+.page-hero-shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(26,34,18,.45) 0%, rgba(26,34,18,.08) 38%, rgba(26,34,18,.18) 62%, rgba(26,34,18,.62) 100%); }
 .page-hero { min-height: min(86vh, 820px); display: flex; }
 .page-hero-inner { width: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding-top: 150px; padding-bottom: 96px; }
 .page-hero-foot { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 40px; margin-top: 40px; }
@@ -253,7 +258,7 @@ a:hover .arrow, a:hover > .arrow { transform: translate(2px, -2px); }
 .jump-links ul { list-style: none; display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
 .jump-links ul::-webkit-scrollbar { display: none; }
 .jump-links a { display: block; white-space: nowrap; padding: 10px 16px; border-radius: 999px; text-decoration: none; font-size: 14.5px; transition: background-color var(--soft); }
-.jump-links a:hover, .jump-links a:focus-visible { background: rgba(43,33,27,.07); }
+.jump-links a:hover, .jump-links a:focus-visible { background: rgba(44,54,32,.07); }
 @media (max-width: 700px) {
   .jump-links { top: 76px; padding-inline: 0; }
   .jump-links .wrap { border-radius: 0; border-inline: 0; padding: 4px 0 4px var(--gutter); }
@@ -284,7 +289,7 @@ a:hover .arrow, a:hover > .arrow { transform: translate(2px, -2px); }
 .shape-arch { aspect-ratio: 4 / 5; border-radius: 999px 999px var(--r) var(--r); }
 .shape-tall { aspect-ratio: 4 / 5; }
 .shape-soft { aspect-ratio: 4 / 3; }
-.photo-ph { width: 100%; height: 100%; display: grid; place-items: end start; padding: 18px; background: linear-gradient(160deg, var(--stone-2), #d6cdc1); }
+.photo-ph { width: 100%; height: 100%; display: grid; place-items: end start; padding: 18px; background: linear-gradient(160deg, var(--stone-2), #cfd2bf); }
 .photo-ph span { font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 
 /* ---------- Home: intro + numbers ---------- */
@@ -302,12 +307,12 @@ a:hover .arrow, a:hover > .arrow { transform: translate(2px, -2px); }
 @media (max-width: 520px) { .stat-grid { grid-template-columns: 1fr; } }
 
 /* ---------- Home: find your way ---------- */
-.finder { position: relative; min-height: 860px; overflow: hidden; isolation: isolate; display: flex; align-items: flex-end; background: #3a3029; }
+.finder { position: relative; min-height: 860px; overflow: hidden; isolation: isolate; display: flex; align-items: flex-end; background: #374426; }
 .finder-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0; transform: scale(1.04); transition: opacity 1.2s var(--ease), transform 2.4s var(--ease); }
 .finder-img.on { opacity: 1; transform: none; }
 .finder-panel {
   width: 100%; color: #fff; padding-block: 56px;
-  background: rgba(60, 50, 42, .28);
+  background: rgba(55, 68, 38, .28);
   backdrop-filter: blur(28px) saturate(1.1); -webkit-backdrop-filter: blur(28px) saturate(1.1);
   border-top: 1px solid rgba(255,255,255,.22);
 }
@@ -442,7 +447,7 @@ a:hover .arrow, a:hover > .arrow { transform: translate(2px, -2px); }
 .prize-amt { font-size: clamp(42px, 4.4vw, 64px); letter-spacing: -0.05em; line-height: 1; margin-bottom: 8px; }
 .prize small { color: var(--muted); font-size: 13.5px; }
 .prize-main { background: var(--brown); color: var(--paper); }
-.prize-main small { color: rgba(248,246,242,.7); }
+.prize-main small { color: rgba(247,246,240,.7); }
 @media (max-width: 900px) { .prize-row { grid-template-columns: 1fr 1fr; } .prize-main { grid-column: 1 / -1; } }
 .winners { margin-top: 72px; }
 .table-wrap { overflow-x: auto; margin-top: 24px; }
@@ -472,16 +477,16 @@ table.contacts td { padding: 16px 16px 16px 0; border-bottom: 1px solid var(--li
 .doc-t strong { font-weight: 400; font-size: 19px; letter-spacing: -0.02em; }
 
 /* ---------- Footer ---------- */
-.site-footer { background: var(--ink); color: rgba(248,246,242,.86); padding-top: clamp(64px, 8vw, 110px); }
+.site-footer { background: var(--ink); color: rgba(247,246,240,.86); padding-top: clamp(64px, 8vw, 110px); }
 .site-footer a { text-decoration: none; transition: opacity var(--soft); }
 .site-footer a:hover { opacity: .6; }
 .footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 28px; padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,.14); }
 .footer-big { font-size: clamp(42px, 6vw, 92px); letter-spacing: -0.055em; line-height: .95; color: var(--paper); max-width: 12ch; }
 .footer-grid { display: grid; grid-template-columns: 1.3fr 1.3fr 1fr 1fr; gap: 32px; padding-block: 48px; font-size: 15px; }
 .footer-grid p { margin-bottom: 10px; }
-.footer-h { font-size: 11.5px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: rgba(248,246,242,.5); margin-bottom: 14px; }
+.footer-h { font-size: 11.5px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: rgba(247,246,240,.5); margin-bottom: 14px; }
 .footer-links { list-style: none; display: grid; gap: 6px; }
-.footer-base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-block: 22px 32px; border-top: 1px solid rgba(255,255,255,.14); font-size: 13px; color: rgba(248,246,242,.5); }
+.footer-base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-block: 22px 32px; border-top: 1px solid rgba(255,255,255,.14); font-size: 13px; color: rgba(247,246,240,.5); }
 @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .footer-grid { grid-template-columns: 1fr; } }
 
@@ -498,7 +503,7 @@ table.contacts td { padding: 16px 16px 16px 0; border-bottom: 1px solid var(--li
 .avatar { overflow: hidden; }
 .avatar img { width: 100%; height: 100%; object-fit: cover; }
 .has-bio { cursor: default; }
-.has-bio h3 { text-decoration: underline dotted rgba(43,33,27,.35); text-underline-offset: 5px; }
+.has-bio h3 { text-decoration: underline dotted rgba(44,54,32,.35); text-underline-offset: 5px; }
 .bio-pop {
   position: absolute; z-index: 6; left: 16px; right: 16px; bottom: calc(100% - 14px);
   padding: 18px 20px; border-radius: var(--r); background: var(--brown); color: var(--paper);
@@ -522,3 +527,127 @@ table.contacts td { padding: 16px 16px 16px 0; border-bottom: 1px solid var(--li
 .donate-contact { padding: 28px; border-radius: var(--r-lg); background: var(--stone-2); display: grid; gap: 18px; justify-items: start; }
 .donate-contact .btn { white-space: normal; text-align: center; }
 @media (max-width: 900px) { .donate-lead { grid-template-columns: 1fr; } }
+
+/* Palette accents: Kombu footer, Olivine highlights */
+.site-footer { background: #374426; }
+.footer-big .thin, .prize-main .prize-amt, .cd-day { color: var(--olivine); }
+
+/* ==========================================================================
+   Soft gradients and glass
+   Soft washes of the greens sit behind the page, and cards, panels and
+   menus are frosted glass floating over them. Buttons and dark blocks use
+   gentle moss-to-kombu gradients. These rules come last so they layer over
+   the flat styles above.
+   ========================================================================== */
+:root {
+  --glass-bg: linear-gradient(145deg, rgba(255,255,255,.62) 0%, rgba(255,255,255,.3) 100%);
+  --glass-bg-hover: linear-gradient(145deg, rgba(255,255,255,.8) 0%, rgba(247,246,240,.5) 100%);
+  --glass-border: 1px solid rgba(255,255,255,.75);
+  --glass-shadow: inset 0 1px 0 rgba(255,255,255,.85), 0 1px 2px rgba(44,54,32,.04), 0 22px 50px -30px rgba(44,54,32,.4);
+  --glass-blur: blur(18px) saturate(1.35);
+  --moss: linear-gradient(135deg, #5d7d37 0%, #47622a 45%, #374426 100%);
+  --moss-hover: linear-gradient(135deg, #6b8c40 0%, #52702f 45%, #3f4d2b 100%);
+}
+
+/* Colour washes behind everything (fixed, so the glass has something to blur) */
+html { background: var(--stone); }
+body { background: transparent; }
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(42vw 38vw at 92% 8%, rgba(159,184,120,.42), rgba(159,184,120,0) 70%),
+    radial-gradient(38vw 36vw at 4% 48%, rgba(121,152,81,.24), rgba(121,152,81,0) 70%),
+    radial-gradient(46vw 40vw at 70% 100%, rgba(223,221,209,.95), rgba(223,221,209,0) 70%),
+    radial-gradient(30vw 26vw at 30% 0%, rgba(159,184,120,.18), rgba(159,184,120,0) 70%),
+    var(--stone);
+}
+
+/* Light bands become soft tinted washes */
+.band-mint { background: linear-gradient(160deg, rgba(223,221,209,.55) 0%, rgba(159,184,120,.22) 100%); }
+.band-pink { background: linear-gradient(200deg, rgba(247,246,240,.55) 0%, rgba(223,221,209,.25) 100%); }
+
+/* ---------- Glass cards ---------- */
+.three-col, .stat-grid, .class-grid, .team-grid, .prize-row, .reviews, .event-list, .doc-list {
+  border: 0; gap: 16px;
+}
+.three-col > :not(.photo), .stat:not(.stat-dark), .class-card, .member, .prize:not(.prize-main),
+.review, .event, .doc, .contact-card, .donate-contact, .solid-card {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur);
+  border: var(--glass-border); border-radius: var(--r-lg);
+  box-shadow: var(--glass-shadow);
+  transition: background var(--soft), box-shadow var(--soft), transform var(--soft);
+}
+.three-col > :not(.photo):hover, .class-card:hover, .member:hover, .prize:not(.prize-main):hover, .doc:hover, .review:hover {
+  background: var(--glass-bg-hover); transform: translateY(-2px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 30px 60px -30px rgba(44,54,32,.5);
+}
+.band .info-card:hover, .info-card:hover { background: var(--glass-bg-hover); }
+.member:hover, .member:focus-within { z-index: 2; }
+.stat-dark, .prize-main { border-radius: var(--r-lg); }
+.review, .review + .review, .reviews > .review:nth-child(3n+1) { padding: 28px; border-left: var(--glass-border); }
+.event { padding: 20px; }
+.event-list { margin-top: 8px; }
+.doc { padding: 18px 22px; }
+.doc:hover { padding-inline: 22px; }
+.doc-list { margin-top: 28px; }
+.stat-grid { align-self: end; }
+
+/* ---------- Glass chrome: header, menus, jump links, chips, filters ---------- */
+.site-header.is-solid .bar {
+  background: linear-gradient(100deg, rgba(247,246,240,.78) 0%, rgba(223,221,209,.66) 100%);
+  border-color: rgba(255,255,255,.8);
+  -webkit-backdrop-filter: blur(22px) saturate(1.4); backdrop-filter: blur(22px) saturate(1.4);
+}
+.submenu > ul, .jump-links .wrap {
+  background: linear-gradient(145deg, rgba(247,246,240,.82) 0%, rgba(223,221,209,.68) 100%);
+  border: var(--glass-border); box-shadow: var(--glass-shadow);
+}
+.chip, .filter { background: rgba(255,255,255,.4); border-color: rgba(255,255,255,.8); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.filter:hover { background: rgba(255,255,255,.7); border-color: rgba(255,255,255,.9); }
+.glass { background: linear-gradient(145deg, rgba(255,255,255,.22) 0%, rgba(255,255,255,.08) 100%); border-color: rgba(255,255,255,.4); }
+
+/* ---------- Gradient buttons and dark blocks ---------- */
+.btn-dark, .btn-primary, .btn-donate, .btn-solid, .filter.on {
+  background: var(--moss); border-color: transparent; color: var(--paper);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 10px 24px -14px rgba(55,68,38,.8);
+}
+.btn-dark:hover, .btn-primary:hover, .btn-donate:hover, .btn-solid:hover { background: var(--moss-hover); }
+.btn-ghost, .btn-outline { background: rgba(255,255,255,.35); border-color: rgba(255,255,255,.85); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.btn-ghost:hover, .btn-outline:hover { background: var(--moss); border-color: transparent; color: var(--paper); }
+.btn-solid-light { background: linear-gradient(135deg, #ffffff 0%, #eef0e2 100%); }
+.btn-solid-light:hover { background: linear-gradient(135deg, #f4f7ea 0%, #dfe7cc 100%); }
+.site-header:not(.is-solid) .nav-ctas .btn-solid { background: linear-gradient(135deg, #ffffff 0%, #eef0e2 100%); color: var(--ink); }
+
+.band-dark, .stat-dark, .note-band, .prize-main, .coffee-date, .avatar {
+  background:
+    radial-gradient(120% 90% at 100% 0%, rgba(159,184,120,.38) 0%, rgba(159,184,120,0) 60%),
+    var(--moss);
+}
+.stat-dark:hover { background: radial-gradient(120% 90% at 100% 0%, rgba(159,184,120,.5) 0%, rgba(159,184,120,0) 60%), var(--moss-hover); }
+.avatar { color: var(--paper); }
+.bio-pop { background: radial-gradient(120% 90% at 100% 0%, rgba(159,184,120,.4) 0%, rgba(159,184,120,0) 60%), var(--moss); }
+.bio-pop::after { border-top-color: #3f5228; }
+.note-band .btn { background: linear-gradient(135deg, #ffffff 0%, #eef0e2 100%); color: var(--ink); }
+
+.site-footer {
+  background:
+    radial-gradient(60% 80% at 100% 0%, rgba(159,184,120,.28) 0%, rgba(159,184,120,0) 60%),
+    radial-gradient(50% 70% at 0% 100%, rgba(44,54,32,.9) 0%, rgba(44,54,32,0) 70%),
+    linear-gradient(160deg, #47622a 0%, #374426 60%);
+}
+
+/* Photo heroes: a soft green tint in the shade */
+.page-hero-shade {
+  background:
+    radial-gradient(70% 60% at 100% 0%, rgba(121,152,81,.35), rgba(121,152,81,0) 70%),
+    linear-gradient(180deg, rgba(26,34,18,.45) 0%, rgba(26,34,18,.06) 38%, rgba(26,34,18,.2) 62%, rgba(26,34,18,.7) 100%);
+}
+.photo-ph { background: linear-gradient(150deg, #dfddd1 0%, #b9c99c 60%, #9fb878 100%); }
+
+@media (max-width: 700px) {
+  .three-col, .stat-grid, .class-grid, .team-grid, .prize-row, .reviews { gap: 12px; }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .three-col > :not(.photo), .class-card, .member, .prize:not(.prize-main), .review, .event, .doc, .contact-card, .donate-contact { background: rgba(247,246,240,.92); }
+}
