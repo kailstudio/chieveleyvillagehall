@@ -15,7 +15,7 @@ const initials = (name) => name.split(' ').map((n) => n[0]).join('').slice(0, 2)
 export default function About() {
   return (
     <>
-      <PageHeader photo="hero-about" eyebrow="About" title="How the hall" accent="is run."
+      <PageHeader photo="hero-about" credit={<><em>Fields around Chieveley</em><br />Photo by local resident G. Harris</>} eyebrow="About" title="How the hall" accent="is run."
         intro={`Chieveley Recreational Centre (CRC) is Registered Charity No. ${SITE.charityNo}, run by a volunteer committee. Meet the team, come to the next meeting and read our documents.`} />
       <JumpLinks page="about" links={[['team', 'Meet the team'], ['meeting', 'Next meeting'], ['documents', 'Documents'], ['vision-2050', 'Vision 2050'], ['contact', 'Contact us']]} />
 

@@ -1,3 +1,13 @@
+// Real photos of the hall (in src/assets/photos/).
+import mainHall from '../assets/photos/main-hall.jpg';
+import mainHallWindows from '../assets/photos/main-hall-windows.jpg';
+import mainHallKitchen from '../assets/photos/main-hall-kitchen.jpg';
+import clubRoom from '../assets/photos/club-room.jpg';
+import clubRoomEntrance from '../assets/photos/club-room-entrance.jpg';
+import clubRoomBar from '../assets/photos/club-room-bar.jpg';
+import fieldsAroundChieveley from '../assets/photos/fields-around-chieveley.jpg';
+import donateSeedling from '../assets/photos/donate-seedling.jpg';
+
 // ---------------------------------------------------------------------------
 // All site copy lives here so the hall team can update it in one place.
 // Content taken from www.chieveleyvillagehall.org (October 2026).
@@ -251,7 +261,7 @@ export const CLUB_500 = {
   ],
 };
 
-export const GALLERY_INTERIOR = ['Main hall', 'Main hall kitchen', 'Club room, from entrance', 'Club room', 'Club room kitchen & bar area'];
+export const GALLERY_INTERIOR = ['Large main hall', 'Large main hall, garden side', 'Main hall kitchen', 'Entrance into Club Room', 'The Club Room', 'Bar area in the Club Room'];
 
 export const FACILITY_PHOTOS = [
   'Chieveley Village Hall', 'Cricketers', 'Watching cricket', 'Party in the hall', 'Ladies night', 'Gardening Club',
@@ -266,7 +276,8 @@ export const FACILITY_PHOTOS = [
 // here, or put the file in src/assets/, import it at the top of this file and
 // use that instead. Keys match the `label` on each <Photo />.
 // ---------------------------------------------------------------------------
-export const img = (id, w = 1400) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
+// Unsplash ids start with 'photo-'; anything else is a local imported photo and is used as is.
+export const img = (id, w = 1400) => (id.startsWith('photo-') ? `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80` : id);
 
 const U = {
   countryside: 'photo-1541598023388-9a08906153a7',   // Colin Watts – foggy morning in the countryside
@@ -305,8 +316,8 @@ export const PHOTOS = {
   'hero-home': U.countryside,
   'hero-whats-on': U.yoga,
   'hero-hire': U.hall,
-  'hero-support': U.bonfire,
-  'hero-about': U.villageSpire,
+  'hero-support': donateSeedling,
+  'hero-about': fieldsAroundChieveley,
   'hero-404': U.villageSun,
   // Home
   'Find: whats-on': U.ballroom,
@@ -316,12 +327,16 @@ export const PHOTOS = {
   'The Coffee Stop': U.coffee,
   'Donate band': U.villageSun,
   // Rooms
-  'Main hall': U.hall,
-  'Main hall kitchen': U.kitchen,
-  'Club room': U.clubRoom,
-  'Club room, from entrance': U.clubRoom,
-  'Club room kitchen & bar': U.bar,
-  'Club room kitchen & bar area': U.bar,
+  'Main hall': mainHallWindows,
+  'Main hall kitchen': mainHallKitchen,
+  'Club room': clubRoom,
+  'Club room kitchen & bar': clubRoomBar,
+  // Take a look inside
+  'Large main hall': mainHall,
+  'Large main hall, garden side': mainHallWindows,
+  'Entrance into Club Room': clubRoomEntrance,
+  'The Club Room': clubRoom,
+  'Bar area in the Club Room': clubRoomBar,
   'Grounds & recreation ground': U.cricket,
   'Playground & parking': U.playground,
   // Hall in use

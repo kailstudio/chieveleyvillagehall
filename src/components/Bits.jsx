@@ -3,13 +3,15 @@ import { href } from '../router.js';
 
 // Full-bleed photo hero used at the top of every inner page.
 // `photo` is a key in PHOTOS (content.js).
-export function PageHeader({ eyebrow, title, accent, intro, children, photo = 'hero-home' }) {
+// `credit` is an optional photo caption shown small at the top right.
+export function PageHeader({ eyebrow, title, accent, intro, children, photo = 'hero-home', credit }) {
   const id = PHOTOS[photo];
   return (
     <section className="page-hero">
       {id && <img className="page-hero-img" src={img(id, 2400)} alt="" fetchpriority="high" />}
       <div className="page-hero-shade" aria-hidden="true" />
       <div className="wrap page-hero-inner">
+        {credit && <p className="page-hero-credit">{credit}</p>}
         {eyebrow && <p className="eyebrow light">{eyebrow}</p>}
         <h1 className="display xl light">
           {title}{accent && <> <span className="thin">{accent}</span></>}

@@ -38,7 +38,7 @@ export default function Hire() {
           <ul className="space-grid">
             {SPACES.map((s) => (
               <li key={s.name} className="space">
-                <Photo label={s.name} shape="soft" tone="mint" />
+                <Photo label={s.name} shape="square" tone="mint" />
                 <h3>{s.name}</h3>
                 <p className="muted">{s.text}</p>
               </li>
@@ -164,8 +164,8 @@ export default function Hire() {
           <div className="interior-row">
             {GALLERY_INTERIOR.map((p) => (
               <figure key={p} className="interior">
-                <Photo label={p} shape="tall" tone="pink" />
-                <figcaption>{p}</figcaption>
+                {/* The room name is printed on each photo, so no separate caption */}
+                <Photo label={p} shape="square" tone="pink" />
               </figure>
             ))}
           </div>

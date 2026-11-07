@@ -212,6 +212,9 @@ a:hover .arrow, a:hover > .arrow { transform: translate(2px, -2px); }
 @keyframes settle { from { transform: scale(1.06); opacity: 0; } to { transform: none; opacity: 1; } }
 .page-hero-shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(26,34,18,.45) 0%, rgba(26,34,18,.08) 38%, rgba(26,34,18,.18) 62%, rgba(26,34,18,.62) 100%); }
 .page-hero { min-height: min(86vh, 820px); display: flex; }
+.page-hero-inner { position: relative; }
+.page-hero-credit { position: absolute; top: 104px; right: var(--gutter); text-align: right; font-size: 13px; line-height: 1.45; color: rgba(255,255,255,.88); text-shadow: 0 1px 6px rgba(0,0,0,.35); }
+.page-hero-credit em { font-family: Georgia, 'Times New Roman', serif; font-size: 17px; }
 .page-hero-inner { width: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding-top: 150px; padding-bottom: 96px; }
 .page-hero-foot { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 40px; margin-top: 40px; }
 .glass-note { max-width: 460px; padding: 22px 24px; border-radius: var(--r); font-size: 15.5px; line-height: 1.55; }
@@ -289,6 +292,7 @@ a:hover .arrow, a:hover > .arrow { transform: translate(2px, -2px); }
 .shape-arch { aspect-ratio: 4 / 5; border-radius: 999px 999px var(--r) var(--r); }
 .shape-tall { aspect-ratio: 4 / 5; }
 .shape-soft { aspect-ratio: 4 / 3; }
+.shape-square { aspect-ratio: 1 / 1; }
 .photo-ph { width: 100%; height: 100%; display: grid; place-items: end start; padding: 18px; background: linear-gradient(160deg, var(--stone-2), #cfd2bf); }
 .photo-ph span { font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 
@@ -428,9 +432,9 @@ a:hover .arrow, a:hover > .arrow { transform: translate(2px, -2px); }
 .masonry { columns: 3 280px; column-gap: 14px; }
 .masonry .photo { break-inside: avoid; margin-bottom: 14px; }
 .masonry .photo:nth-child(3n+1) { aspect-ratio: 4 / 5; }
-.interior-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.interior-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .interior figcaption { font-size: 13.5px; color: var(--muted); margin-top: 10px; }
-.interior .photo { aspect-ratio: 3 / 4; }
+.interior .photo { aspect-ratio: 1 / 1; }
 .photos-h { margin: 72px 0 32px; }
 @media (max-width: 900px) { .interior-row { grid-template-columns: repeat(2, 1fr); } }
 
