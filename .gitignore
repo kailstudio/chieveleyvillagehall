@@ -1,3 +1,5 @@
 node_modules/
 dist/
 *.pdf
+# ...but keep the documents the website links to
+!public/files/*.pdf
