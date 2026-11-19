@@ -1,4 +1,5 @@
 import { SITE, GOV_DOCS, TEAM, CLUB_500, COMMITTEE_CONTACT, CHAIR_EMAIL } from '../data/content.js';
+import CardStack from '../components/CardStack.jsx';
 import { href } from '../router.js';
 import { PageHeader, JumpLinks, Arrow } from '../components/Bits.jsx';
 
@@ -15,7 +16,7 @@ const initials = (name) => name.split(' ').map((n) => n[0]).join('').slice(0, 2)
 export default function About() {
   return (
     <>
-      <PageHeader photo="hero-about" credit={<><em>Fields around Chieveley</em><br />Photo by local resident G. Harris</>} eyebrow="About" title="How the hall" accent="is run."
+      <PageHeader photo="hero-about" pale eyebrow="About" title="How the hall" accent="is run."
         intro={`Chieveley Recreational Centre (CRC) is Registered Charity No. ${SITE.charityNo}, run by a volunteer committee. Meet the team, come to the next meeting and read our documents.`} />
       <JumpLinks page="about" links={[['team', 'Meet the team'], ['meeting', 'Next meeting'], ['documents', 'Documents'], ['vision-2050', 'Vision 2050'], ['contact', 'Contact us']]} />
 
@@ -53,12 +54,14 @@ export default function About() {
 
       {/* ---------- Next meeting / AGM ---------- */}
       <section id="meeting" className="band band-pink">
-        <div className="wrap meeting">
-          <div className="coffee-date" aria-hidden="true"><span className="cd-day">23</span><span className="cd-mon">November</span><span className="cd-sub">Monday</span></div>
-          <div>
-            <p className="eyebrow">Notice of next meeting</p>
-            <h2 className="display sm">AGM <span className="thin">&amp; Trustees meeting 2026</span></h2>
-            <p className="lede">Monday 23 November at Chieveley Village Hall. All are welcome.</p>
+        <div className="wrap">
+          <div className="meeting-card">
+            <div className="coffee-date" aria-hidden="true"><span className="cd-day">23</span><span className="cd-mon">November</span><span className="cd-sub">Monday</span></div>
+            <div className="meeting-copy">
+              <ul className="price-tags"><li className="is-dark">Notice of next meeting</li></ul>
+              <h2 className="price-title meeting-title">AGM <span className="thin">&amp; Trustees meeting 2026</span></h2>
+              <p className="lede">Monday 23 November at Chieveley Village Hall. All are welcome.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -71,7 +74,7 @@ export default function About() {
             {GOV_DOCS.map((d) => (
               <li key={d.title}>
                 <a href={d.url} target="_blank" rel="noreferrer" className="doc">
-                  <span className="doc-ic" aria-hidden="true">PDF</span>
+                  <span className="doc-ic" aria-hidden="true">{d.type || 'PDF'}</span>
                   <span className="doc-t"><strong>{d.title}</strong><span className="muted small">{d.note}</span></span>
                   <Arrow />
                 </a>
@@ -100,7 +103,7 @@ export default function About() {
             <article className="info-card">
               <h3 className="h3">Results from the questionnaire</h3>
               <p>The full results cover how the hall should develop and which activities and classes people want. Some requests are already happening; others are in progress.</p>
-              <a className="text-link" href="https://www.chieveleyvillagehall.org/_files/ugd/dcef2e_c3ada41eced748779526522dce25d22a.pdf" target="_blank" rel="noreferrer">High-level results (PDF) <Arrow /></a>
+              <a className="text-link" href="./files/vision-2050-questionnaire-results.pdf" target="_blank" rel="noreferrer">High-level results (PDF) <Arrow /></a>
             </article>
             <article className="info-card">
               <h3 className="h3">Solar panels installed</h3>
@@ -118,28 +121,45 @@ export default function About() {
 
       {/* ---------- Contact us ---------- */}
       <section id="contact" className="section">
-        <div className="wrap">
-          <h2 className="display sm">Contact <span className="thin">us</span></h2>
-          <div className="three-col">
-            <article className="info-card">
-              <h3 className="h3">Bookings &amp; help on the day</h3>
-              <p>{SITE.bookingsManager}, Bookings Manager</p>
-              <p className="small"><a href={`mailto:${SITE.email}`}>{SITE.email}</a><br /><a href={`tel:${SITE.phone.replace(/\s/g, '')}`}>{SITE.phone}</a></p>
-            </article>
-            <article className="info-card">
-              <h3 className="h3">The committee</h3>
-              <p>{COMMITTEE_CONTACT.name}, {COMMITTEE_CONTACT.role}</p>
-              <p className="small"><a href={`mailto:${COMMITTEE_CONTACT.email}`}>{COMMITTEE_CONTACT.email}</a></p>
-              <p className="small">500 Club: <a href={`mailto:${CLUB_500.email}`}>{CLUB_500.email}</a></p>
-            </article>
-            <article className="info-card">
-              <h3 className="h3">Classes</h3>
-              <p>Each class lists its organiser's phone or email.</p>
-              <a className="text-link" href={href('whats-on/classes')}>Weekly classes <Arrow /></a>
-              <p className="muted small">{SITE.address}</p>
-              <a className="text-link" href={SITE.mapsUrl} target="_blank" rel="noreferrer">Open in Google Maps <Arrow /></a>
-            </article>
+        <div className="wrap stack-layout stack-full">
+          <div className="stack-intro">
+            <h2 className="display sm">Contact <span className="thin">us</span></h2>
           </div>
+          <CardStack>
+            <article key="c1">
+              <div className="stk-head">
+                <p className="stk-k">01 / 03</p>
+                <h3>Bookings &amp; help on the day</h3>
+              </div>
+              <div className="stk-detail">
+                <p>{SITE.bookingsManager}, Bookings Manager</p>
+                <p className="small"><a href={`mailto:${SITE.email}`}>{SITE.email}</a><br /><a href={`tel:${SITE.phone.replace(/\s/g, '')}`}>{SITE.phone}</a></p>
+              </div>
+            </article>
+            <article key="c2">
+              <div className="stk-head">
+                <p className="stk-k">02 / 03</p>
+                <h3>The committee</h3>
+              </div>
+              <div className="stk-detail">
+                <p>{COMMITTEE_CONTACT.name}, {COMMITTEE_CONTACT.role}</p>
+                <p className="small"><a href={`mailto:${COMMITTEE_CONTACT.email}`}>{COMMITTEE_CONTACT.email}</a></p>
+                <p className="small">500 Club: <a href={`mailto:${CLUB_500.email}`}>{CLUB_500.email}</a></p>
+              </div>
+            </article>
+            <article key="c3">
+              <div className="stk-head">
+                <p className="stk-k">03 / 03</p>
+                <h3>Classes</h3>
+              </div>
+              <div className="stk-detail">
+                <p>Each class lists its organiser's phone or email.</p>
+                <a className="text-link" href={href('whats-on/classes')}>Weekly classes <Arrow /></a>
+                <p className="muted small">{SITE.address}</p>
+                <a className="text-link" href={SITE.mapsUrl} target="_blank" rel="noreferrer">Open in Google Maps <Arrow /></a>
+              </div>
+            </article>
+          </CardStack>
         </div>
       </section>
     </>

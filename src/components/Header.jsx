@@ -19,10 +19,15 @@ export default function Header({ page, section }) {
 
   // Glass header over the hero photo; turns solid once you scroll.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    // On the home page's stone opening screen the bar is solid from the start.
+    const onScroll = () => setScrolled(window.scrollY > 40 || document.body.classList.contains('home-intro'));
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener('hero-intro', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('hero-intro', onScroll);
+    };
   }, []);
 
   // Rest the blob on the current page's item when nothing is hovered.
@@ -60,7 +65,21 @@ export default function Header({ page, section }) {
   return (
     <header className={`site-header ${scrolled || open ? 'is-solid' : ''}`}>
       <div className="bar">
-        <a href={href('home')} className="brand" aria-label="Chieveley Village Hall home">
+        <a
+          href={href('home')}
+          className="brand"
+          aria-label="Chieveley Village Hall home"
+          onClick={(e) => {
+            // Already on the landing page: the address wouldn't change, so
+            // scroll back to the top (the opening screen) instead.
+            if (/^#?\/?(home\/?)?$/.test(window.location.hash)) {
+              e.preventDefault();
+              setOpen(false);
+              const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+              window.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
+            }
+          }}
+        >
           <span className="brand-mark"><img src={logo} alt="" /></span>
           <span className="brand-name">Chieveley<br />Village Hall</span>
         </a>

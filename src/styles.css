@@ -1,7 +1,7 @@
 /* ==========================================================================
    Chieveley Village Hall
-   Timberwolf stone, moss and kombu greens, and full-bleed photography. Inter Tight in light
-   weights for large headings, frosted-glass panels over photos, hairline
+   Timberwolf stone, moss and kombu greens, and full-bleed photography. Momo Trust Display
+   for headings and Crimson Text for everything else, frosted-glass panels over photos, hairline
    grids, thin pill buttons. Every hover is a slow, soft fade.
    ========================================================================== */
 :root {
@@ -22,7 +22,8 @@
   --glass: rgba(255, 255, 255, 0.16);
   --glass-strong: rgba(247, 246, 240, 0.82);
 
-  --font: 'Inter Tight', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font: 'Crimson Text', Georgia, 'Times New Roman', serif;                  /* everything that isn't a heading */
+  --font-head: 'Momo Trust Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* headings */
 
   --r-sm: 12px;
   --r: 20px;
@@ -55,10 +56,10 @@ main:focus { outline: none; }
 /* ---------- Type ---------- */
 .eyebrow { font-size: 12px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
 .eyebrow.light { color: rgba(255,255,255,.82); }
-.display { font-weight: 400; font-size: clamp(36px, 5vw, 68px); line-height: 1; letter-spacing: -0.045em; }
+.display { font-weight: 400; font-size: clamp(36px, 5vw, 68px); line-height: 1; letter-spacing: -0.0225em; }
 .display.sm { font-size: clamp(30px, 3.6vw, 48px); }
-.display.xl { font-size: clamp(48px, 9vw, 132px); letter-spacing: -0.055em; line-height: .92; }
-.mega { font-weight: 400; color: #fff; font-size: clamp(64px, 15.5vw, 236px); line-height: .82; letter-spacing: -0.065em; margin-left: -0.04em; }
+.display.xl { font-size: clamp(48px, 9vw, 132px); letter-spacing: -0.0275em; line-height: .92; }
+.mega { font-weight: 400; color: #fff; font-size: clamp(64px, 15.5vw, 236px); line-height: .82; letter-spacing: -0.0325em; margin-left: -0.04em; }
 .mega-sm { font-size: clamp(52px, 10vw, 150px); }
 .thin { font-weight: 200; }
 .light { color: #fff; }
@@ -82,7 +83,7 @@ a:hover .arrow, a:hover > .arrow { transform: translate(2px, -2px); }
 
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-  font: 500 14.5px/1 var(--font); letter-spacing: 0; text-decoration: none; white-space: nowrap;
+  font: 500 14.5px/1 var(--font); letter-spacing: 0; text-decoration: none; white-space: nowrap; font-size-adjust: 0.5;
   padding: 15px 24px; border-radius: 999px; border: 1px solid transparent; cursor: pointer;
   transition: background-color var(--soft), color var(--soft), border-color var(--soft), box-shadow var(--soft), transform var(--soft);
 }
@@ -133,7 +134,7 @@ a:hover .arrow, a:hover > .arrow { transform: translate(2px, -2px); }
 .nav-item { position: relative; z-index: 1; }
 .nav-link {
   display: inline-flex; align-items: center; gap: 6px; background: none; border: 0;
-  font: 400 14.5px/1 var(--font); color: inherit; text-decoration: none;
+  font: 400 14.5px/1 var(--font); color: inherit; text-decoration: none; font-size-adjust: 0.5;
   padding: 12px 14px; border-radius: 999px; cursor: pointer; white-space: nowrap;
   opacity: .85; transition: opacity var(--soft);
 }
@@ -196,7 +197,7 @@ a:hover .arrow, a:hover > .arrow { transform: translate(2px, -2px); }
   .nav.is-open { display: flex; }
   .nav > ul { flex-direction: column; }
   .nav-blobs, .nav-link .chev { display: none; }
-  .nav-link { width: 100%; padding: 14px 8px 8px; font-size: 22px; letter-spacing: -0.03em; opacity: 1; }
+  .nav-link { width: 100%; padding: 14px 8px 8px; font-size: 22px; letter-spacing: -0.015em; opacity: 1; }
   .submenu, .menu-open > .submenu { position: static; transform: none; opacity: 1; visibility: visible; pointer-events: auto; transition: none; min-width: 0; margin: 0 0 8px 8px; }
   .submenu::before { display: none; }
   .submenu > ul, .menu-open > .submenu > ul { background: none; border: 0; box-shadow: none; padding: 0; backdrop-filter: none; -webkit-backdrop-filter: none; display: flex; flex-wrap: wrap; gap: 6px; }
@@ -214,7 +215,7 @@ a:hover .arrow, a:hover > .arrow { transform: translate(2px, -2px); }
 .page-hero { min-height: min(86vh, 820px); display: flex; }
 .page-hero-inner { position: relative; }
 .page-hero-credit { position: absolute; top: 104px; right: var(--gutter); text-align: right; font-size: 13px; line-height: 1.45; color: rgba(255,255,255,.88); text-shadow: 0 1px 6px rgba(0,0,0,.35); }
-.page-hero-credit em { font-family: Georgia, 'Times New Roman', serif; font-size: 17px; }
+.page-hero-credit em { font-family: var(--font); font-size: 17px; }
 .page-hero-inner { width: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding-top: 150px; padding-bottom: 96px; }
 .page-hero-foot { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 40px; margin-top: 40px; }
 .glass-note { max-width: 460px; padding: 22px 24px; border-radius: var(--r); font-size: 15.5px; line-height: 1.55; }
@@ -303,7 +304,7 @@ a:hover .arrow, a:hover > .arrow { transform: translate(2px, -2px); }
 .stat-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); border-left: 1px solid var(--line); align-self: end; }
 .stat { min-height: 230px; padding: 24px; display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .stat p { font-size: 14.5px; line-height: 1.35; max-width: 20ch; }
-.stat-n { font-size: clamp(48px, 5vw, 76px); font-weight: 400; letter-spacing: -0.05em; line-height: .8; }
+.stat-n { font-size: clamp(48px, 5vw, 76px); font-weight: 400; letter-spacing: -0.025em; line-height: .8; }
 .stat-dark { background: var(--brown); color: var(--paper); flex-direction: column; align-items: flex-start; justify-content: space-between; text-decoration: none; transition: background-color var(--soft); }
 .stat-dark p { font-size: 17px; max-width: 24ch; }
 .stat-dark:hover { background: var(--brown-2); }
@@ -321,7 +322,7 @@ a:hover .arrow, a:hover > .arrow { transform: translate(2px, -2px); }
   border-top: 1px solid rgba(255,255,255,.22);
 }
 .finder-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 40px; align-items: center; }
-.finder-big { font-size: clamp(34px, 3.6vw, 52px); letter-spacing: -0.045em; line-height: 1; }
+.finder-big { font-size: clamp(34px, 3.6vw, 52px); letter-spacing: -0.0225em; line-height: 1; }
 .finder-list { list-style: none; display: grid; gap: 6px; justify-items: center; border-block: 1px solid rgba(255,255,255,.5); padding-block: 22px; }
 .finder-list a { display: block; padding: 12px 30px; border-radius: 999px; border: 1px solid transparent; text-decoration: none; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; opacity: .75; transition: opacity var(--soft), border-color var(--soft), font-size var(--soft), background-color var(--soft); }
 .finder-list a.on { opacity: 1; border-color: rgba(255,255,255,.75); font-size: 17px; background: rgba(255,255,255,.06); }
@@ -339,7 +340,7 @@ a:hover .arrow, a:hover > .arrow { transform: translate(2px, -2px); }
 .coffee { display: grid; grid-template-columns: .9fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: center; }
 .coffee-copy .display { margin-bottom: 22px; }
 .coffee-copy .lede { margin-bottom: 26px; }
-.big-date { font-size: clamp(56px, 7vw, 104px); letter-spacing: -0.06em; line-height: .9; margin-bottom: 26px; color: var(--brown-2); }
+.big-date { font-size: clamp(56px, 7vw, 104px); letter-spacing: -0.03em; line-height: .9; margin-bottom: 26px; color: var(--brown-2); }
 .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
 .chip { font-size: 13.5px; padding: 8px 15px; border-radius: 999px; border: 1px solid var(--line); }
 @media (max-width: 860px) { .coffee { grid-template-columns: 1fr; } }
@@ -364,7 +365,7 @@ a:hover .arrow, a:hover > .arrow { transform: translate(2px, -2px); }
 .info-card { padding: clamp(24px, 3vw, 36px); min-width: 0; transition: background-color var(--soft); }
 .info-card:hover { background: rgba(255,255,255,.35); }
 .band .info-card:hover { background: rgba(255,255,255,.45); }
-.big-stat { display: block; font-size: 64px; letter-spacing: -0.05em; line-height: 1; margin-bottom: 18px; }
+.big-stat { display: block; font-size: 64px; letter-spacing: -0.025em; line-height: 1; margin-bottom: 18px; }
 .tick-list { list-style: none; display: grid; gap: 10px; margin: 16px 0; }
 .tick-list li { position: relative; padding-left: 22px; }
 .tick-list li::before { content: ''; position: absolute; left: 0; top: .72em; width: 10px; height: 1px; background: currentColor; opacity: .55; }
@@ -384,7 +385,7 @@ a:hover .arrow, a:hover > .arrow { transform: translate(2px, -2px); }
 /* Steps */
 .steps { list-style: none; display: grid; margin-top: 28px; border-top: 1px solid var(--line); }
 .step { display: grid; grid-template-columns: 64px 1fr; gap: 16px; padding: 22px 0; border-bottom: 1px solid var(--line); }
-.step-n { font-size: 32px; font-weight: 200; letter-spacing: -0.04em; line-height: 1; }
+.step-n { font-size: 32px; font-weight: 200; letter-spacing: -0.02em; line-height: 1; }
 .step h3 { font-size: 19px; font-weight: 500; letter-spacing: -0.015em; margin-bottom: 6px; }
 .step p { color: var(--muted); font-size: 15.5px; }
 
@@ -412,10 +413,10 @@ a:hover .arrow, a:hover > .arrow { transform: translate(2px, -2px); }
 .event-media { position: relative; }
 .event-media .photo { aspect-ratio: 4 / 3; }
 .event-date { position: absolute; left: 14px; top: 14px; display: grid; justify-items: center; padding: 10px 14px; border-radius: 16px; min-width: 70px; }
-.ed-day { font-size: 30px; letter-spacing: -0.04em; line-height: 1; }
+.ed-day { font-size: 30px; letter-spacing: -0.02em; line-height: 1; }
 .ed-mon { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; margin-top: 4px; }
 .event-body { align-self: center; }
-.event-body .h3 { font-size: clamp(26px, 2.6vw, 36px); letter-spacing: -0.035em; }
+.event-body .h3 { font-size: clamp(26px, 2.6vw, 36px); letter-spacing: -0.0175em; }
 .event-body p { color: var(--muted); max-width: 60ch; }
 .event-body .eyebrow { margin-bottom: 10px; }
 .event-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
@@ -448,7 +449,7 @@ a:hover .arrow, a:hover > .arrow { transform: translate(2px, -2px); }
 /* 500 Club */
 .prize-row { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); margin-bottom: 40px; }
 .prize { display: flex; flex-direction: column; gap: 4px; padding: 26px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.prize-amt { font-size: clamp(42px, 4.4vw, 64px); letter-spacing: -0.05em; line-height: 1; margin-bottom: 8px; }
+.prize-amt { font-size: clamp(42px, 4.4vw, 64px); letter-spacing: -0.025em; line-height: 1; margin-bottom: 8px; }
 .prize small { color: var(--muted); font-size: 13.5px; }
 .prize-main { background: var(--brown); color: var(--paper); }
 .prize-main small { color: rgba(247,246,240,.7); }
@@ -469,7 +470,7 @@ table.contacts td { padding: 16px 16px 16px 0; border-bottom: 1px solid var(--li
 .tag { display: inline-block; margin-left: 8px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
 .meeting { display: grid; grid-template-columns: auto 1fr; gap: clamp(28px, 5vw, 72px); align-items: center; }
 .coffee-date { display: grid; justify-items: center; align-content: center; width: 200px; aspect-ratio: 1; border-radius: 50%; background: var(--brown); color: var(--paper); text-align: center; }
-.cd-day { font-size: 76px; font-weight: 200; letter-spacing: -0.06em; line-height: .9; }
+.cd-day { font-size: 76px; font-weight: 200; letter-spacing: -0.03em; line-height: .9; }
 .cd-mon { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; }
 .cd-sub { font-size: 14px; opacity: .7; margin-top: 4px; }
 @media (max-width: 700px) { .meeting { grid-template-columns: 1fr; } .coffee-date { width: 150px; } .cd-day { font-size: 56px; } }
@@ -485,7 +486,7 @@ table.contacts td { padding: 16px 16px 16px 0; border-bottom: 1px solid var(--li
 .site-footer a { text-decoration: none; transition: opacity var(--soft); }
 .site-footer a:hover { opacity: .6; }
 .footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 28px; padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,.14); }
-.footer-big { font-size: clamp(42px, 6vw, 92px); letter-spacing: -0.055em; line-height: .95; color: var(--paper); max-width: 12ch; }
+.footer-big { font-size: clamp(42px, 6vw, 92px); letter-spacing: -0.0275em; line-height: .95; color: var(--paper); max-width: 12ch; }
 .footer-grid { display: grid; grid-template-columns: 1.3fr 1.3fr 1fr 1fr; gap: 32px; padding-block: 48px; font-size: 15px; }
 .footer-grid p { margin-bottom: 10px; }
 .footer-h { font-size: 11.5px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: rgba(247,246,240,.5); margin-bottom: 14px; }
@@ -655,3 +656,1235 @@ body::before {
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .three-col > :not(.photo), .class-card, .member, .prize:not(.prize-main), .review, .event, .doc, .contact-card, .donate-contact { background: rgba(247,246,240,.92); }
 }
+
+
+/* ==========================================================================
+   Home hero: day to night on scroll, soft motion, and the "After that" card.
+   --p (0 to 1) is set from Home.jsx as the hero scrolls away.
+   ========================================================================== */
+.home-hero { --p: 0; --y: 0; overflow: visible; z-index: 2; }
+.hero-media { position: absolute; inset: 0; overflow: hidden; z-index: -2; }
+.hero-drift { position: absolute; inset: 0; animation: hero-in 2.4s var(--ease) both, hero-drift 38s ease-in-out 2.4s infinite alternate; }
+.hero-media img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  transform: translate3d(0, calc(var(--y) * 0.5px), 0) scale(1.04); transform-origin: 50% 0;
+  will-change: transform, opacity;
+}
+.hero-night { opacity: 0; transition: opacity 1.4s var(--ease); }
+.is-night .hero-night { opacity: 1; }
+/* The night photo is already dark, so the shade lightens a little at night. */
+.home-hero .page-hero-shade { transition: opacity 1.4s var(--ease); }
+.home-hero.is-night .page-hero-shade { opacity: .75; }
+@keyframes hero-in { from { opacity: 0; transform: scale(1.05); } to { opacity: 1; transform: none; } }
+@keyframes hero-drift { from { transform: scale(1) translate3d(0, 0, 0); } to { transform: scale(1.045) translate3d(-1%, -0.6%, 0); } }
+
+/* Hero copy rises in, one piece after another. */
+.home-hero-inner > .eyebrow,
+.home-hero-inner > .mega,
+.home-hero-copy,
+.groups-pill,
+.hero-cards { animation: rise 1.1s var(--ease) both; }
+.home-hero-inner > .eyebrow { animation-delay: .35s; }
+.home-hero-inner > .mega { animation-delay: .5s; }
+.home-hero-copy { animation-delay: .7s; }
+.groups-pill { animation-delay: .85s; }
+.hero-cards { animation-delay: 1s; }
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+/* Next-event card with the "After that" card tucked behind it. As the hero
+   scrolls away, --reveal runs 0 to 1 and the card slides out from underneath. */
+.next-stack { position: relative; }
+.next-card { position: relative; z-index: 2; }
+.peek-card {
+  --reveal: clamp(0, calc((var(--p) - 0.06) * 2.6), 1);
+  position: absolute; left: 10px; right: 10px; bottom: 0; z-index: 1;
+  display: grid; gap: 4px; padding: 16px 18px;
+  border-radius: var(--r); text-decoration: none;
+  background: #e3e9d6; color: var(--ink); box-shadow: var(--shadow);
+  transform: translate3d(0, calc(var(--reveal) * (100% + 12px)), 0) scale(calc(0.94 + var(--reveal) * 0.06));
+  opacity: clamp(0, calc(var(--reveal) * 4), 1);
+  transition: background-color var(--soft), box-shadow var(--soft);
+}
+.peek-card:hover { background: #d8e2c6; box-shadow: 0 30px 60px -28px rgba(0,0,0,.55); }
+.peek-card .hc-t { font-size: 16.5px; }
+.peek-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; font-size: 13.5px; color: var(--palm); }
+
+/* Small screens and reduced motion: no scroll effects, the card just sits below. */
+@media (max-width: 1000px) {
+  .peek-card { position: relative; left: 0; right: 0; transform: none; opacity: 1; margin-top: 10px; }
+  .next-stack { display: flex; flex-direction: column-reverse; }
+  .hero-media img { transform: scale(1.04); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-drift { animation: none; }
+  .hero-media img { transform: none; }
+  .peek-card { position: relative; left: 0; right: 0; transform: none; opacity: 1; margin-top: 10px; }
+  .next-stack { display: flex; flex-direction: column-reverse; }
+}
+
+
+/* ---------- Hero title: bold gradient text with a glow that follows the cursor ----------
+   Day: white into pale wheat gold, with a warm gold glow under the cursor.
+   Night: white into moonlit silver blue, with a cool blue glow.
+   The colours are animatable custom properties, so day and night blend. */
+@property --t1 { syntax: '<color>'; inherits: true; initial-value: #ffffff; }
+@property --t2 { syntax: '<color>'; inherits: true; initial-value: #f6e3b4; }
+@property --t3 { syntax: '<color>'; inherits: true; initial-value: #e9c77e; }
+@property --spot { syntax: '<color>'; inherits: true; initial-value: rgba(233, 178, 74, 0); }
+.hero-title {
+  --t1: #ffffff; --t2: #f6e3b4; --t3: #e9c77e;
+  --spot: rgba(233, 178, 74, 0); --mx: 50%; --my: 50%;
+  font-weight: 600; letter-spacing: -0.035em;
+  width: fit-content; cursor: default; -webkit-tap-highlight-color: transparent; user-select: none;
+  /* Extra room so the gradient reaches the tails of g and y. */
+  padding: .06em .04em .2em 0; margin-top: -.06em; margin-bottom: -.2em;
+  color: transparent;
+  background-image:
+    radial-gradient(circle clamp(120px, 14vw, 260px) at var(--mx) var(--my), var(--spot) 0%, transparent 100%),
+    linear-gradient(100deg, var(--t1) 0%, var(--t1) 22%, var(--t2) 38%, var(--t3) 50%, var(--t2) 62%, var(--t1) 78%, var(--t1) 100%);
+  background-size: 100% 100%, 260% 100%; background-position: 0 0, 100% 0; background-repeat: no-repeat;
+  -webkit-background-clip: text; background-clip: text;
+  filter: drop-shadow(0 2px 14px rgba(20, 26, 12, .28));
+  translate: 0 0;
+  transition: --t1 1.4s var(--ease), --t2 1.4s var(--ease), --t3 1.4s var(--ease), --spot .6s var(--ease),
+              background-position 1.8s var(--ease), translate .9s var(--ease), filter 1.4s var(--ease);
+}
+.hero-title .thin { color: transparent; font-weight: 400; }
+.hero-title:hover, .is-night .hero-title { background-position: 0 0, 0 0; translate: 0 -4px; }
+.hero-title:hover { --spot: rgba(233, 178, 74, 1); }
+.is-night .hero-title {
+  --t1: #ffffff; --t2: #dfe6ff; --t3: #a9bdf2;
+  filter: drop-shadow(0 0 22px rgba(190, 208, 255, .35)) drop-shadow(0 2px 14px rgba(8, 12, 30, .35));
+}
+.is-night .hero-title:hover { --spot: rgba(132, 162, 255, 1); }
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero-title, .hero-title .thin { color: #fff; background: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-title:hover, .is-night .hero-title { translate: none; }
+}
+
+
+/* ==========================================================================
+   Home opening sequence: the name alone on stone, then a circle rises with
+   the hero photo inside it, grows to fill the screen, and the name settles
+   into the hero. Variables set from Home.jsx: --t (0 to 1, name's journey),
+   --off (px from the middle of the screen to the hero spot), --cue.
+   ========================================================================== */
+.hero-track { position: relative; height: calc(max(680px, 100svh) * 3); }
+@media (max-width: 700px) {
+  .hero-track { height: calc(100svh * 3); }
+  .hero-stage { height: 100svh; }
+  .hero-stage .home-hero-inner { padding-top: 104px; padding-bottom: 28px; }
+  .hero-stage .home-hero-foot { gap: 18px; margin-top: 28px; }
+  .hero-stage .groups-pill { display: none; } /* the same figure is in the numbers just below */
+}
+.hero-stage { --t: 0; --off: 0; --offx: 0; --cue: 1; --rise: 0; position: sticky; top: 0; height: max(680px, 100svh); }
+.hero-stage .home-hero { position: absolute; inset: 0; min-height: 0; height: 100%; will-change: clip-path; }
+.hero-stage.intro-done .home-hero { will-change: auto; }
+.intro-plain { position: absolute; inset: 0; background: var(--stone); overflow: hidden; }
+
+/* Both copies of the name travel together from the middle of the screen. */
+.hero-stage .hero-title,
+.hero-title-ghost { transform: translate3d(calc(var(--offx) * (1 - var(--t)) * 1px), calc(var(--off) * (1 - var(--t)) * 1px), 0); }
+.hero-stage .home-hero-inner > .mega { animation: none; }
+.hero-title-ghost {
+  position: absolute; margin: 0; pointer-events: none; display: block; box-sizing: border-box;
+  background: none; filter: none; color: var(--ink);
+  -webkit-background-clip: border-box; background-clip: border-box;
+}
+.hero-title-ghost .thin { color: var(--ink); }
+
+/* Scroll cue on the opening screen. */
+.intro-cue {
+  position: absolute; left: 50%; bottom: 34px; translate: -50% 0; display: grid; justify-items: center; gap: 10px;
+  font-size: 11.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted);
+  opacity: var(--cue);
+}
+.intro-cue i { width: 1px; height: 46px; background: linear-gradient(var(--muted), transparent); transform-origin: top; animation: cue 2.2s var(--ease) infinite; }
+@keyframes cue { 0% { transform: scaleY(0); opacity: 1; } 70% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
+
+/* The rest of the hero waits until the circle has filled the screen. */
+.hero-stage .home-hero-inner > .eyebrow,
+.hero-stage .home-hero-copy,
+.hero-stage .groups-pill,
+.hero-stage .hero-cards {
+  animation: none; opacity: 0; transform: translateY(18px);
+  transition: opacity .9s var(--ease), transform .9s var(--ease);
+}
+.hero-stage .home-hero.revealed .home-hero-inner > .eyebrow,
+.hero-stage .home-hero.revealed .home-hero-copy,
+.hero-stage .home-hero.revealed .groups-pill,
+.hero-stage .home-hero.revealed .hero-cards { opacity: 1; transform: none; }
+.hero-stage .home-hero.revealed .home-hero-copy { transition-delay: .1s; }
+.hero-stage .home-hero.revealed .groups-pill { transition-delay: .2s; }
+.hero-stage .home-hero.revealed .hero-cards { transition-delay: .3s; }
+
+
+/* Reduced motion: no opening screen, just the hero. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-track { height: auto; }
+  .hero-stage { position: relative; }
+  .intro-plain { display: none; }
+  .hero-stage .home-hero { position: relative; }
+  .hero-stage .hero-title, .hero-title-ghost { transform: none; }
+}
+
+
+/* Momo Trust Display comes in one weight (Regular). Stop browsers faking
+   bold or light versions, which smudge its rounded letters. */
+html { font-synthesis-weight: none; font-synthesis: style; }
+/* Momo is wider than Inter Tight: keep the home name on two lines. */
+.hero-title { font-size: clamp(54px, 12.6vw, 196px); }
+
+/* ---------- Two typefaces ----------
+   Crimson Text (serif) for body copy, buttons, labels and cards; Momo Trust
+   Display for headings. Crimson's small letters are short, so font-size-adjust
+   scales it to match the sizes the layout was designed with. */
+body { font-size-adjust: 0.5; }
+/* (the font shorthand resets this, so rules that use it set it again) */
+h1, h2, h3, h4, h5, h6,
+.mega, .display, .h3, .stat-n, .big-date, .prize-amt, .cd-day, .footer-big, .finder-big {
+  font-family: var(--font-head); font-size-adjust: none;
+}
+/* Home heading: "Chieveley" stays in Momo, "Village Hall" is set in Crimson Text. */
+.hero-title .thin { font-family: var(--font); font-size-adjust: 0.5; letter-spacing: -0.02em; font-size: 0.56em; display: block; line-height: 1; margin-top: .02em; }
+/* Crimson's capitals are wider: keep small card labels on one line. */
+.hc-k { letter-spacing: .08em; }
+
+
+/* ==========================================================================
+   Illustrated hero (light picture, dark name)
+   ========================================================================== */
+/* Opening screen inverts it: light name on dark green. */
+.intro-plain { background: var(--brown-2); }
+.hero-title-ghost, .hero-title-ghost .thin, .hero-title-ghost .title-word { color: var(--stone); background: none; }
+.intro-cue { color: rgba(236,235,227,.7); }
+.intro-cue i { background: linear-gradient(rgba(236,235,227,.7), transparent); }
+
+/* The picture is light, so only the bottom is shaded, behind the buttons. */
+.home-hero .page-hero-shade { background: linear-gradient(180deg, rgba(26,34,18,0) 52%, rgba(26,34,18,.18) 72%, rgba(26,34,18,.55) 100%); }
+.home-hero .home-hero-inner > .eyebrow { color: var(--muted); }
+
+/* Name in dark green; an orange glow inside "Chieveley" follows the cursor. */
+@property --spot { syntax: '<color>'; inherits: true; initial-value: rgba(238, 138, 80, 0); }
+.hero-title {
+  color: var(--ink); background: none; filter: none;
+  -webkit-background-clip: border-box; background-clip: border-box;
+}
+.hero-title .thin { color: var(--ink); }
+.hero-title .title-word {
+  --spot: rgba(238, 138, 80, 0); --mx: 50%; --my: 50%;
+  color: transparent;
+  background-image:
+    radial-gradient(circle clamp(110px, 12vw, 230px) at var(--mx) var(--my), var(--spot) 0%, rgba(238, 138, 80, 0) 100%),
+    linear-gradient(100deg, #2c3620 0%, #47622a 55%, #2c3620 100%);
+  -webkit-background-clip: text; background-clip: text;
+  transition: --spot .6s var(--ease);
+}
+.hero-title:hover .title-word { --spot: rgba(238, 138, 80, 1); }
+.hero-title.hero-title-ghost .title-word,
+.hero-title.hero-title-ghost .thin { color: var(--stone); background: none; }
+/* Frosted cards read better as light glass with dark text on the light picture. */
+.home-hero .hero-card { background: rgba(247, 246, 240, .72); color: var(--ink); border-color: rgba(255,255,255,.8); }
+.home-hero .hero-card:hover { background: rgba(247, 246, 240, .9); }
+
+/* Menu bar stays hidden on the home page's opening sequence and slides in
+   once the hero has fully opened. */
+.site-header { transition: padding var(--soft), opacity .8s var(--ease), translate .8s var(--ease), visibility 0s; }
+body.home-intro .site-header {
+  opacity: 0; translate: 0 -18px; visibility: hidden; pointer-events: none;
+  transition: opacity .5s var(--ease), translate .5s var(--ease), visibility 0s linear .5s;
+}
+@media (prefers-reduced-motion: reduce) { body.home-intro .site-header { translate: none; } }
+
+/* The orange glow works from the start: on the opening screen's light copy
+   of the name, and on the dark one inside the circle as it opens. */
+.intro-plain .hero-title-ghost { pointer-events: auto; }
+.hero-stage .hero-title.hero-title-ghost .title-word {
+  --spot: rgba(238, 138, 80, 0); --mx: 50%; --my: 50%;
+  color: transparent;
+  background-image:
+    radial-gradient(circle clamp(110px, 12vw, 230px) at var(--mx) var(--my), var(--spot) 0%, rgba(238, 138, 80, 0) 100%),
+    linear-gradient(100deg, #ecebe3 0%, #f7f6f0 55%, #ecebe3 100%);
+  -webkit-background-clip: text; background-clip: text;
+  transition: --spot .6s var(--ease);
+}
+.hero-stage .hero-title.hero-title-ghost:hover .title-word { --spot: rgba(238, 138, 80, 1); }
+
+
+/* ==========================================================================
+   Opening screen: the drawing from the logo (components/HallSketch.jsx)
+   stands with the name, centred together. Home.jsx places it and sets --rise
+   (0 to 1) as the visitor scrolls, and the sun comes up over the arch.
+   ========================================================================== */
+.intro-art {
+  position: absolute; pointer-events: none;
+  /* Travels with the name as it glides into the hero. */
+  transform: translate3d(calc(var(--offx) * var(--t) * -1px), calc(var(--off) * var(--t) * -1px), 0);
+}
+.hall-sketch { --sun-colour: #ee8a50; display: block; width: 100%; height: 100%; overflow: visible; }
+.hs-cover { fill: var(--brown-2); }
+.hs-art { fill: url(#hs-art-glow); }
+.hs-art-base { stop-color: var(--stone); }
+.hs-art-spot { stop-color: var(--stone); transition: stop-color .6s var(--ease); }
+.intro-plain.glow-on .hs-art-spot { stop-color: #ee8a50; }
+.hs-sun { transform: translateY(calc((1 - var(--rise, 0)) * 204px)); }
+.hs-glow { opacity: var(--rise, 0); }
+.hs-disc { fill: var(--sun-colour); }
+.hs-glow-in { stop-color: var(--sun-colour); stop-opacity: .38; }
+.hs-glow-out { stop-color: var(--sun-colour); stop-opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .intro-art { transform: none; } }
+
+
+/* ==========================================================================
+   Home intro: pill-shaped hall photo, three fanned stat cards and a wide
+   "Learn more" button. Hover glows follow the cursor (--gx, --gy, set by
+   followGlow in Home.jsx).
+   ========================================================================== */
+.intro-photo { aspect-ratio: 2 / 1; border-radius: 999px; }
+.intro-photo img { object-position: 50% 58%; }
+
+.intro-side { align-self: end; display: grid; gap: 22px; }
+.stat-fan { position: relative; height: clamp(300px, 29vw, 400px); margin-top: 24px; }
+.fan-card {
+  --r: 0deg; --y: 0px; --px: 0px; --lift: 0px;
+  position: absolute; bottom: 0; width: 41%; height: 86%;
+  display: flex; flex-direction: column; justify-content: space-between; gap: 16px;
+  padding: clamp(18px, 2vw, 28px);
+  border-radius: var(--r-lg); overflow: hidden; isolation: isolate;
+  /* Each card sets its own three greens (--c1 to --c3); a soft sheen sits in the top corner. */
+  --c1: #f7f6f0; --c2: #e6ebd8; --c3: #c9d6b0; --sheen: rgba(255,255,255,.75);
+  --glow: rgba(159,184,120,.6); --wash: rgba(185,201,156,.5);
+  background:
+    radial-gradient(120% 75% at 0% 0%, var(--sheen), rgba(255,255,255,0) 60%),
+    linear-gradient(160deg, var(--c1) 0%, var(--c2) 55%, var(--c3) 100%);
+  border: 1px solid rgba(255,255,255,.85);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 1px 2px rgba(44,54,32,.05), 0 26px 50px -26px rgba(44,54,32,.5);
+  transform: translate(var(--px), calc(var(--y) + var(--lift))) rotate(var(--r));
+  transform-origin: 50% 100%;
+  transition: transform .7s var(--ease), box-shadow .7s var(--ease);
+}
+/* Fanned like the sketch, rising left to right. Each card overlaps the right
+   edge of the one before, so the copy sits in the left part of every card. */
+.fan-1 { left: 0;     --r: -6deg;   --y: 0px;   z-index: 1; }
+.fan-2 { left: 29.5%; --r: -1.5deg; --y: -22px; z-index: 2; }
+.fan-3 { left: 59%;   --r: 5deg;    --y: -40px; z-index: 3; }
+/* Light to dark across the fan: pale stone, olive, then deep moss with light text. */
+.fan-2 { --c1: #eef1e2; --c2: #cbd9b0; --c3: #9fb878; --sheen: rgba(255,255,255,.6); --glow: rgba(255,255,255,.55); --wash: rgba(121,152,81,.35); }
+.fan-3 {
+  --c1: #6b8c40; --c2: #47622a; --c3: #2c3620; --sheen: rgba(185,201,156,.35);
+  --glow: rgba(185,201,156,.45); --wash: rgba(159,184,120,.25);
+  color: var(--paper); border-color: rgba(255,255,255,.2);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(44,54,32,.08), 0 30px 56px -26px rgba(44,54,32,.7);
+}
+/* Pull the card out of the stack: up, out to its side, and to the front. */
+.fan-card:hover { --lift: -22px; z-index: 4; box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 40px 70px -30px rgba(44,54,32,.55); }
+.fan-1:hover { --px: -10px; --r: -8deg; }
+.fan-2:hover { --r: 0deg; }
+.fan-3:hover { --px: 10px; --r: 7deg; }
+/* Gradient that fades in on hover: a green glow under the cursor over a soft wash. */
+.fan-card::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; opacity: 0;
+  background:
+    radial-gradient(260px circle at var(--gx, 50%) var(--gy, 20%), var(--glow), rgba(255,255,255,0) 70%),
+    linear-gradient(160deg, rgba(255,255,255,0) 30%, var(--wash) 100%);
+  transition: opacity .7s var(--ease);
+}
+.fan-card:hover::before { opacity: 1; }
+.fan-card .stat-n { font-size: clamp(40px, 4.4vw, 68px); color: var(--ink); transition: color .7s var(--ease); }
+.fan-card:hover .stat-n { color: var(--brown); }
+.fan-3 .stat-n { color: var(--paper); }
+.fan-3:hover .stat-n { color: #e3e9d6; }
+.fan-card p { font-size: 14.5px; line-height: 1.35; max-width: 68%; }
+
+.fan-cta {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: flex; align-items: center; justify-content: space-between; gap: 18px;
+  padding: 20px 22px 20px 30px; border-radius: 999px;
+  color: var(--paper); text-decoration: none; font-size: 17px; line-height: 1.3;
+  background: var(--moss);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 18px 36px -20px rgba(55,68,38,.9);
+  transition: transform .6s var(--ease), box-shadow .6s var(--ease);
+}
+.fan-cta::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; opacity: 0;
+  background:
+    radial-gradient(240px circle at var(--gx, 80%) var(--gy, 50%), rgba(159,184,120,.7), rgba(159,184,120,0) 70%),
+    var(--moss-hover);
+  transition: opacity .7s var(--ease);
+}
+.fan-cta:hover { transform: translateY(-2px); box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 24px 44px -20px rgba(55,68,38,.95); }
+.fan-cta:hover::before { opacity: 1; }
+.fan-cta-link {
+  flex: none; display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 18px; border-radius: 999px; font-size: 15px; font-weight: 500;
+  background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.35);
+  transition: background .6s var(--ease);
+}
+.fan-cta:hover .fan-cta-link { background: rgba(255,255,255,.24); }
+.fan-cta:focus-visible { outline-offset: 4px; border-radius: 999px; }
+
+@media (max-width: 900px) { .stat-fan { height: clamp(280px, 62vw, 380px); } }
+@media (max-width: 520px) {
+  .stat-fan { margin-inline: 12px; }
+  .fan-card { width: 44%; padding: 16px; }
+  .fan-1 { --r: -4deg; }
+  .fan-2 { left: 28%; --r: -1deg; }
+  .fan-3 { left: 56%; --r: 3.5deg; }
+  .fan-1:hover { --r: -5deg; }
+  .fan-3:hover { --r: 4.5deg; }
+  .fan-card p { font-size: 13px; max-width: 72%; }
+  .fan-cta { flex-direction: column; align-items: flex-start; border-radius: var(--r-lg); padding: 22px; }
+}
+@media (prefers-reduced-motion: reduce) { .fan-card, .fan-cta { transition: none; } }
+
+/* "Four ways in" on tablets and phones: the panel stacks tall, so give the
+   hall illustration its own space above it, framed on the building. */
+@media (max-width: 900px) {
+  .finder { min-height: 0; padding-top: 58vw; }
+  .finder-img { bottom: auto; height: calc(58vw + 140px); object-position: 55% 50%; }
+}
+
+/* ==========================================================================
+   Coffee Stop: round illustration, details that invert on hover, and a
+   gradient glass box for "All upcoming events".
+   ========================================================================== */
+.coffee-photo { aspect-ratio: 1; border-radius: 50%; box-shadow: 0 30px 70px -40px rgba(44,54,32,.55); }
+.coffee-photo img { object-position: 50% 60%; }
+
+.coffee-copy .chip {
+  cursor: default;
+  transition: background-color 1s var(--ease), color 1s var(--ease), border-color 1s var(--ease);
+}
+.coffee-copy .chip:hover { background-color: var(--brown-2); border-color: var(--brown-2); color: var(--paper); }
+
+.events-glass {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; gap: 22px;
+  padding: 14px 14px 14px 28px; border-radius: 999px;
+  font-size: 19px; letter-spacing: -0.01em; text-decoration: none; color: var(--ink);
+  background: linear-gradient(120deg, rgba(255,255,255,.78) 0%, rgba(247,246,240,.42) 45%, rgba(159,184,120,.34) 100%);
+  border: 1px solid rgba(255,255,255,.9);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4); backdrop-filter: blur(18px) saturate(1.4);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 1px 2px rgba(44,54,32,.05), 0 24px 50px -28px rgba(44,54,32,.5);
+  transition: transform .8s var(--ease), box-shadow .8s var(--ease);
+}
+/* A stronger green glow follows the cursor on hover. */
+.events-glass::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; opacity: 0;
+  background:
+    radial-gradient(220px circle at var(--gx, 70%) var(--gy, 50%), rgba(159,184,120,.6), rgba(159,184,120,0) 70%),
+    linear-gradient(120deg, rgba(255,255,255,.6) 0%, rgba(223,231,204,.7) 100%);
+  transition: opacity .9s var(--ease);
+}
+.events-glass:hover { transform: translateY(-2px); box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 32px 60px -28px rgba(44,54,32,.6); }
+.events-glass:hover::before { opacity: 1; }
+.events-glass-arrow {
+  display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  background: var(--moss); color: var(--paper);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 8px 18px -10px rgba(55,68,38,.9);
+  transition: transform .9s var(--ease);
+}
+.events-glass:hover .events-glass-arrow { transform: rotate(45deg); }
+@media (max-width: 860px) { .coffee-photo { max-width: 520px; width: 100%; justify-self: center; } }
+@media (prefers-reduced-motion: reduce) { .coffee-copy .chip, .events-glass, .events-glass-arrow { transition: none; } }
+
+/* ==========================================================================
+   Home reviews (components/Testimonials.jsx): one large quote, and a row of
+   reviewer pills that open up to show a name. Adapted from the "unique
+   testimonial" component.
+   ========================================================================== */
+.tm { display: grid; justify-items: center; gap: 40px; padding-block: 36px 12px; }
+.tm-quote-wrap { position: relative; margin: 0; display: grid; justify-items: center; gap: 26px; padding-inline: clamp(8px, 4vw, 56px); }
+.tm-mark {
+  position: absolute; font-family: var(--font); font-size: clamp(110px, 12vw, 180px); line-height: 1;
+  color: var(--olivine); opacity: .35; pointer-events: none; user-select: none;
+}
+.tm-mark-open { left: clamp(-12px, -1vw, 0px); top: -.38em; }
+.tm-mark-close { right: clamp(-12px, -1vw, 0px); bottom: .1em; }
+.tm-quote { margin: 0; }
+.tm-quote p {
+  max-width: 26ch; text-align: center; color: var(--ink);
+  font-size: clamp(28px, 3.4vw, 46px); line-height: 1.22; letter-spacing: -0.02em;
+}
+.tm-quote, .tm-role { transition: opacity .45s cubic-bezier(.4, 0, .2, 1), filter .45s cubic-bezier(.4, 0, .2, 1), transform .5s cubic-bezier(.4, 0, .2, 1); }
+.tm-quote.is-out { opacity: 0; filter: blur(6px); transform: scale(.98); }
+.tm-role { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 10px; min-height: 1.5em; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); text-align: center; }
+.tm-role.is-out { opacity: 0; transform: translateY(8px); }
+.tm-by { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.tm-people { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.tm-person {
+  display: inline-flex; align-items: center; padding: 3px; border: 0; border-radius: 999px; cursor: pointer;
+  background: transparent; color: var(--ink); font: inherit;
+  transition: background-color .5s cubic-bezier(.4, 0, .2, 1), padding .5s cubic-bezier(.4, 0, .2, 1), box-shadow .5s cubic-bezier(.4, 0, .2, 1);
+}
+.tm-person.is-open { padding: 6px 18px 6px 6px; }
+.tm-person:not(.is-active):hover, .tm-person:not(.is-active):focus-visible { background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 1px rgba(255,255,255,.9), 0 10px 24px -16px rgba(44,54,32,.5); }
+.tm-person.is-active { background: var(--moss); color: var(--paper); box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 14px 30px -16px rgba(55,68,38,.9); }
+.tm-avatar {
+  display: grid; place-items: center; flex: none; width: 40px; height: 40px; border-radius: 50%;
+  font-size: 13px; font-weight: 600; letter-spacing: .04em; color: var(--paper);
+  transition: transform .5s cubic-bezier(.4, 0, .2, 1), box-shadow .5s cubic-bezier(.4, 0, .2, 1);
+}
+.tm-avatar-0 { background: linear-gradient(135deg, #9fb878, #5d7d37); }
+.tm-avatar-1 { background: linear-gradient(135deg, #799851, #374426); }
+.tm-avatar-2 { background: linear-gradient(135deg, #b9c99c, #799851); }
+.tm-avatar-3 { background: linear-gradient(135deg, #6b8c40, #2c3620); }
+.tm-person:not(.is-active):hover .tm-avatar { transform: scale(1.05); }
+.tm-person.is-active .tm-avatar { box-shadow: 0 0 0 2px rgba(255,255,255,.35); }
+/* The name slides open: a one-column grid that grows from 0fr to 1fr. */
+.tm-name-wrap {
+  display: grid; grid-template-columns: 0fr; opacity: 0; margin-left: 0;
+  transition: grid-template-columns .5s cubic-bezier(.4, 0, .2, 1), opacity .5s cubic-bezier(.4, 0, .2, 1), margin .5s cubic-bezier(.4, 0, .2, 1);
+}
+.tm-person.is-open .tm-name-wrap { grid-template-columns: 1fr; opacity: 1; margin-left: 10px; }
+.tm-name { overflow: hidden; white-space: nowrap; font-size: 15px; font-weight: 600; }
+@media (prefers-reduced-motion: reduce) {
+  .tm-quote, .tm-role, .tm-person, .tm-avatar, .tm-name-wrap { transition: none; }
+}
+
+/* Footer: "Bringing community" gets the same orange glow under the cursor as
+   "Chieveley" in the home page name. Inline-block so the glow's position
+   works across both lines. */
+.footer-big .glow-word {
+  --spot: rgba(238, 138, 80, 0); --mx: 50%; --my: 50%;
+  display: inline-block; color: transparent;
+  background-image:
+    radial-gradient(circle clamp(90px, 10vw, 200px) at var(--mx) var(--my), var(--spot) 0%, rgba(238, 138, 80, 0) 100%),
+    linear-gradient(100deg, #ecebe3 0%, #f7f6f0 55%, #ecebe3 100%);
+  -webkit-background-clip: text; background-clip: text;
+  transition: --spot .6s var(--ease);
+}
+.footer-big:hover .glow-word { --spot: rgba(238, 138, 80, 1); }
+
+/* "Keep the lights on": the illustration is pale, so a lighter shade keeps its
+   pastel glow and a soft shadow keeps the white name readable over it. */
+.donate-band .page-hero-shade { background: linear-gradient(180deg, rgba(26,34,18,.38) 0%, rgba(26,34,18,.12) 42%, rgba(26,34,18,.1) 62%, rgba(26,34,18,.42) 100%); }
+.donate-band .mega { text-shadow: 0 2px 18px rgba(26,34,18,.3), 0 10px 60px rgba(26,34,18,.35); }
+
+/* Page headers over a pale illustration (PageHeader pale), e.g. What's on:
+   a lighter shade keeps the pastel colours, a soft shadow keeps the title readable. */
+.page-hero-pale .page-hero-shade {
+  background:
+    radial-gradient(70% 60% at 100% 0%, rgba(121,152,81,.22), rgba(121,152,81,0) 70%),
+    linear-gradient(180deg, rgba(26,34,18,.34) 0%, rgba(26,34,18,.1) 40%, rgba(26,34,18,.12) 62%, rgba(26,34,18,.5) 100%);
+}
+.page-hero-pale h1 { text-shadow: 0 2px 18px rgba(26,34,18,.32), 0 10px 60px rgba(26,34,18,.38); }
+
+
+/* The orange glow covers the whole name, "Village Hall" as well as
+   "Chieveley": in the hero (on hover) and on the opening screen (glow-on is
+   set while the pointer is over it, and lights the logo drawing too). */
+.home-hero .hero-title .thin,
+.hero-stage .hero-title.hero-title-ghost .thin {
+  --spot: rgba(238, 138, 80, 0); --mx: 50%; --my: 50%;
+  color: transparent;
+  -webkit-background-clip: text; background-clip: text;
+  transition: --spot .6s var(--ease);
+}
+.home-hero .hero-title .thin {
+  background-image:
+    radial-gradient(circle clamp(110px, 12vw, 230px) at var(--mx) var(--my), var(--spot) 0%, rgba(238, 138, 80, 0) 100%),
+    linear-gradient(100deg, #2c3620 0%, #47622a 55%, #2c3620 100%);
+}
+.hero-stage .hero-title.hero-title-ghost .thin {
+  background-image:
+    radial-gradient(circle clamp(110px, 12vw, 230px) at var(--mx) var(--my), var(--spot) 0%, rgba(238, 138, 80, 0) 100%),
+    linear-gradient(100deg, #ecebe3 0%, #f7f6f0 55%, #ecebe3 100%);
+}
+.home-hero .hero-title:hover .thin,
+.intro-plain.glow-on .hero-title-ghost .title-word,
+.intro-plain.glow-on .hero-title-ghost .thin { --spot: rgba(238, 138, 80, 1); }
+
+
+/* ==========================================================================
+   Past events gallery (components/ThumbnailCarousel.jsx): one big pill-shaped
+   photo that slides, with thumbnails underneath. Thumbnails rest at 40% and
+   come up to full on hover; the current one is ringed in green.
+   ========================================================================== */
+.tc { display: grid; gap: 14px; outline: none; }
+.tc-viewport { overflow: hidden; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
+.tc-viewport.is-dragging { cursor: grabbing; }
+.tc-track { display: flex; transition: transform .9s cubic-bezier(.2, 1.12, .3, 1); will-change: transform; }
+.tc-viewport.is-dragging .tc-track { transition: none; }
+.tc-slide { flex: 0 0 100%; min-width: 0; }
+.tc-pill {
+  position: relative; margin: 0; aspect-ratio: 2.2 / 1; border-radius: 999px; overflow: hidden;
+  background: var(--stone-2); transform: scale(.85);
+  box-shadow: 0 30px 60px -36px rgba(44,54,32,.6);
+  transition: transform .9s cubic-bezier(.2, 1.12, .3, 1);
+}
+.tc-slide.is-active .tc-pill { transform: scale(.95); }
+.tc-pill img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.tc-caption {
+  position: absolute; left: 50%; bottom: 8%; translate: -50% 8px; opacity: 0;
+  padding: 8px 18px; border-radius: 999px; white-space: nowrap;
+  font-size: 14px; letter-spacing: .02em; color: var(--paper);
+  background: rgba(26,34,18,.38); border: 1px solid rgba(255,255,255,.3);
+  -webkit-backdrop-filter: blur(12px) saturate(1.3); backdrop-filter: blur(12px) saturate(1.3);
+  transition: opacity .7s var(--ease) .25s, translate .7s var(--ease) .25s;
+}
+.tc-slide.is-active .tc-caption { opacity: 1; translate: -50% 0; }
+.tc:focus-visible .tc-slide.is-active .tc-pill { outline: 2px solid var(--brown-2); outline-offset: 4px; }
+
+.tc-thumbs { position: relative; display: flex; justify-content: center; gap: 10px; overflow-x: auto; padding: 8px 6px 10px; scrollbar-width: none; }
+.tc-thumbs::-webkit-scrollbar { display: none; }
+.tc-thumb {
+  flex: none; width: 56px; height: 56px; padding: 0; border: 0; border-radius: 14px; overflow: hidden; cursor: pointer;
+  background: var(--stone-2);
+  transition: transform .6s var(--ease), box-shadow .6s var(--ease);
+}
+.tc-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.tc-thumb.is-active { transform: scale(1.1); box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--brown), 0 10px 20px -10px rgba(44,54,32,.6); }
+@media (max-width: 640px) {
+  .tc-pill { aspect-ratio: 1.6 / 1; }
+  .tc-thumbs { justify-content: flex-start; gap: 8px; }
+  .tc-thumb { width: 44px; height: 44px; border-radius: 11px; }
+  .tc-caption { font-size: 12.5px; padding: 6px 14px; }
+}
+@media (prefers-reduced-motion: reduce) { .tc-track, .tc-pill, .tc-caption, .tc-thumb { transition: none; } }
+
+/* ==========================================================================
+   Hire › How to book: the intro stays put on the left while the five steps
+   (components/StepStack.jsx) slide up and stack on the right. Each card sticks
+   16px lower than the one before; covered cards step back a little (--depth).
+   The help card sits at the bottom.
+   ========================================================================== */
+.steps-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+.steps-intro { position: sticky; top: 170px; }
+.step-stack { --stack-top: 168px; list-style: none; display: grid; gap: 22vh; padding-bottom: 8px; }
+.stack-card {
+  --c1: #fbfaf5; --c2: #eef0e2; --c3: #dfe7cc; --sheen: rgba(255,255,255,.8); --ink-c: var(--ink); --muted-c: var(--muted); --n-c: rgba(71,98,42,.85);
+  position: sticky; top: calc(var(--stack-top) + var(--i) * 16px);
+  display: grid; grid-template-columns: auto 1fr; gap: clamp(18px, 3vw, 40px); align-items: start;
+  min-height: 260px; padding: clamp(26px, 3.4vw, 44px);
+  border-radius: var(--r-lg); overflow: hidden; isolation: isolate; color: var(--ink-c);
+  background:
+    radial-gradient(110% 80% at 0% 0%, var(--sheen), rgba(255,255,255,0) 55%),
+    linear-gradient(150deg, var(--c1) 0%, var(--c2) 55%, var(--c3) 100%);
+  border: 1px solid rgba(255,255,255,.75);
+  -webkit-backdrop-filter: blur(22px) saturate(1.3); backdrop-filter: blur(22px) saturate(1.3);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.85), 0 -10px 30px -18px rgba(44,54,32,.25), 0 30px 60px -32px rgba(44,54,32,.5);
+  transform: scale(calc(1 - var(--depth, 0) * .035)); transform-origin: 50% 0;
+  will-change: transform;
+}
+/* Covered cards dim slightly as they step back. */
+.stack-card::after {
+  content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none; border-radius: inherit;
+  background: rgba(26,34,18,1); opacity: calc(min(var(--depth, 0), 2) * .06);
+}
+/* Pale stone, sage, olivine, then palm and moss with light text. */
+.stack-2 { --c1: #f1f3e6; --c2: #dce6c8; --c3: #c3d3a2; }
+.stack-3 { --c1: #e3ebd1; --c2: #bfd09d; --c3: #9fb878; --sheen: rgba(255,255,255,.6); --muted-c: #4a5638; }
+.stack-4 { --c1: #86a35d; --c2: #5d7d37; --c3: #47622a; --sheen: rgba(223,231,204,.4); --ink-c: var(--paper); --muted-c: rgba(247,246,240,.82); --n-c: rgba(223,231,204,.9); border-color: rgba(255,255,255,.25); }
+.stack-5 { --c1: #5d7d37; --c2: #3e5426; --c3: #2c3620; --sheen: rgba(159,184,120,.35); --ink-c: var(--paper); --muted-c: rgba(247,246,240,.8); --n-c: var(--olivine); border-color: rgba(255,255,255,.2); }
+.stack-n { font-family: var(--font-head); font-size: clamp(56px, 6.4vw, 104px); line-height: .85; letter-spacing: -0.04em; color: var(--n-c); }
+.stack-k { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted-c); margin-bottom: 14px; }
+.stack-body h3 { font-size: clamp(24px, 2.4vw, 34px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 12px; }
+.stack-body p:last-child { color: var(--muted-c); font-size: 16.5px; line-height: 1.5; max-width: 46ch; }
+
+.help-card {
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px 48px; align-items: center;
+  margin-top: clamp(56px, 8vw, 96px); padding: clamp(28px, 3.6vw, 48px);
+  border-radius: var(--r-lg); position: relative; overflow: hidden;
+  background:
+    radial-gradient(70% 120% at 100% 0%, rgba(159,184,120,.4), rgba(159,184,120,0) 60%),
+    linear-gradient(120deg, rgba(255,255,255,.8) 0%, rgba(247,246,240,.5) 50%, rgba(223,231,204,.6) 100%);
+  border: 1px solid rgba(255,255,255,.9);
+  -webkit-backdrop-filter: blur(20px) saturate(1.35); backdrop-filter: blur(20px) saturate(1.35);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 30px 60px -36px rgba(44,54,32,.45);
+}
+.help-card h3 { font-size: clamp(26px, 2.6vw, 36px); font-weight: 400; letter-spacing: -0.02em; margin-bottom: 10px; }
+.help-card p { color: var(--muted); max-width: 46ch; }
+.help-lines { display: grid; gap: 6px; justify-items: start; font-size: 19px; }
+.help-lines a { text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size var(--soft); }
+.help-lines a:hover { background-size: 100% 1px; }
+.help-lines .small { color: var(--muted); margin-top: 8px; font-size: 14.5px; }
+
+@media (max-width: 900px) {
+  .steps-layout { grid-template-columns: 1fr; }
+  .steps-intro { position: static; }
+  .step-stack { --stack-top: 150px; gap: 16vh; }
+  .help-card { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .stack-card { grid-template-columns: 1fr; gap: 10px; min-height: 0; }
+  .stack-n { font-size: 52px; }
+}
+@media (prefers-reduced-motion: reduce) { .stack-card { transform: none; } .stack-card::after { display: none; } }
+
+/* ==========================================================================
+   Hire › Prices: one gradient glass card (tags, big title, a line, the text
+   and a big arrow to the price list).
+   ========================================================================== */
+.price-section { padding-block: clamp(56px, 8vw, 110px); }
+.price-card {
+  position: relative; overflow: hidden; isolation: isolate;
+  padding: clamp(26px, 3.6vw, 48px); border-radius: var(--r-lg);
+  background:
+    radial-gradient(60% 90% at 100% 0%, rgba(159,184,120,.75) 0%, rgba(159,184,120,0) 60%),
+    radial-gradient(55% 80% at 0% 100%, rgba(238,138,80,.28) 0%, rgba(238,138,80,0) 60%),
+    radial-gradient(80% 70% at 30% 0%, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 60%),
+    linear-gradient(135deg, #f4f3ea 0%, #e3e9d6 45%, #c9d8ad 100%);
+  border: 1px solid rgba(255,255,255,.9);
+  -webkit-backdrop-filter: blur(22px) saturate(1.35); backdrop-filter: blur(22px) saturate(1.35);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.95), inset 0 -40px 80px -60px rgba(71,98,42,.35), 0 40px 80px -46px rgba(44,54,32,.55);
+}
+/* A soft blurred orb drifting in the corner for depth. */
+.price-card::before {
+  content: ''; position: absolute; z-index: -1; right: -8%; bottom: -40%; width: 46%; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, rgba(121,152,81,.55), rgba(71,98,42,0) 70%);
+  filter: blur(20px); transition: transform 1.6s var(--ease);
+}
+.price-card:hover::before { transform: translate(-6%, -8%) scale(1.06); }
+.price-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: clamp(28px, 4vw, 48px); }
+.price-tags li {
+  padding: 7px 14px; border-radius: 999px; font-size: 13.5px; line-height: 1.2;
+  border: 1px solid rgba(44,54,32,.28); background: rgba(255,255,255,.35);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+.price-tags li.is-dark { background: var(--moss); color: var(--paper); border-color: transparent; }
+.price-title {
+  font-family: var(--font-head); font-weight: 400; color: var(--ink);
+  font-size: clamp(48px, 7.4vw, 112px); line-height: .92; letter-spacing: -0.035em;
+  padding-bottom: clamp(20px, 2.6vw, 32px); margin-bottom: clamp(18px, 2.4vw, 28px);
+  border-bottom: 1px solid rgba(44,54,32,.22);
+}
+.price-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px 40px; }
+.price-foot p { max-width: 52ch; font-size: clamp(16.5px, 1.4vw, 19px); line-height: 1.5; color: #3d4830; }
+.price-go { flex: none; display: inline-flex; align-items: center; gap: 16px; text-decoration: none; color: var(--ink); font-size: 16px; }
+.price-arrow {
+  display: grid; place-items: center; width: clamp(64px, 6vw, 84px); aspect-ratio: 1; border-radius: 50%;
+  background: var(--moss); color: var(--paper);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 16px 30px -14px rgba(55,68,38,.9);
+  transition: transform .8s var(--ease), box-shadow .8s var(--ease);
+}
+.price-go:hover .price-arrow { transform: rotate(45deg) scale(1.05); box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 22px 40px -16px rgba(55,68,38,.95); }
+.price-go:focus-visible { outline: none; }
+.price-go:focus-visible .price-arrow { outline: 2px solid var(--brown-2); outline-offset: 4px; }
+@media (max-width: 700px) {
+  .price-foot { flex-direction: column; align-items: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) { .price-card::before, .price-arrow { transition: none; } }
+
+/* Every picture in the gallery (the big one and the thumbnails) rests at 40%
+   and comes up to 90% on hover. Only where the device can hover; on phones
+   they show at 90%. The caption and the green ring stay at full strength. */
+.tc-pill img, .tc-thumb img { opacity: .9; transition: opacity .9s var(--ease); }
+@media (hover: hover) {
+  .tc-pill img, .tc-thumb img { opacity: .4; }
+  .tc-pill:hover img, .tc-thumb:hover img, .tc-thumb:focus-visible img { opacity: .9; }
+}
+
+/* ==========================================================================
+   Hire › Dog shows: gradient glass cards. "Inside & out" is pale sage into
+   Olivine; "Elite & beginner" is Palm Leaf into deep moss with light text.
+   A glow fades in on hover. The photo beside them is rounded to match.
+   ========================================================================== */
+#dog-shows .info-card {
+  position: relative; overflow: hidden; isolation: isolate;
+  background:
+    radial-gradient(90% 60% at 0% 0%, rgba(255,255,255,.85), rgba(255,255,255,0) 60%),
+    radial-gradient(70% 70% at 100% 0%, rgba(159,184,120,.7), rgba(159,184,120,0) 65%),
+    radial-gradient(60% 60% at 0% 100%, rgba(238,138,80,.2), rgba(238,138,80,0) 60%),
+    linear-gradient(160deg, #f5f4ec 0%, #e1e9d0 50%, #bfd09d 100%);
+  border: 1px solid rgba(255,255,255,.85);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), inset 0 -50px 80px -60px rgba(71,98,42,.4), 0 30px 60px -34px rgba(44,54,32,.55);
+}
+#dog-shows .info-card + .info-card {
+  color: var(--paper); border-color: rgba(255,255,255,.22);
+  background:
+    radial-gradient(90% 60% at 0% 0%, rgba(223,231,204,.4), rgba(223,231,204,0) 60%),
+    radial-gradient(70% 70% at 100% 0%, rgba(185,201,156,.55), rgba(185,201,156,0) 65%),
+    radial-gradient(60% 60% at 0% 100%, rgba(238,138,80,.18), rgba(238,138,80,0) 60%),
+    linear-gradient(160deg, #86a35d 0%, #4f6c2d 50%, #2c3620 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 30px 60px -30px rgba(44,54,32,.75);
+}
+#dog-shows .info-card + .info-card .h3 { color: var(--paper); }
+#dog-shows .info-card + .info-card .tick-list li { color: rgba(247,246,240,.88); }
+/* Hover: a soft glow rises from the bottom-right corner. */
+#dog-shows .info-card::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; opacity: 0;
+  background: radial-gradient(80% 70% at 100% 100%, rgba(159,184,120,.6), rgba(159,184,120,0) 70%);
+  transition: opacity .9s var(--ease);
+}
+#dog-shows .info-card + .info-card::before { background: radial-gradient(80% 70% at 100% 100%, rgba(223,231,204,.35), rgba(223,231,204,0) 70%); }
+#dog-shows .info-card:hover::before { opacity: 1; }
+#dog-shows .info-card:hover { transform: translateY(-3px); }
+#dog-shows .three-col > .photo { border-radius: var(--r-lg); box-shadow: 0 30px 60px -34px rgba(44,54,32,.55); }
+
+/* Hire › "Take a look inside our hall": the same carousel as Past events. */
+.tc-interior { margin-top: clamp(24px, 3vw, 40px); }
+
+/* Dog shows, warmer: more orange in both cards.
+   "Inside & out": cream into peach and apricot, a touch of sage top-right.
+   "Elite & beginner": moss with a strong orange glow rising from the bottom-left. */
+#dog-shows .info-card {
+  background:
+    radial-gradient(90% 60% at 0% 0%, rgba(255,255,255,.85), rgba(255,255,255,0) 60%),
+    radial-gradient(60% 55% at 100% 0%, rgba(159,184,120,.45), rgba(159,184,120,0) 65%),
+    radial-gradient(85% 75% at 100% 100%, rgba(238,138,80,.55), rgba(238,138,80,0) 65%),
+    linear-gradient(160deg, #fbf6ee 0%, #f6e0c8 50%, #ecbf98 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), inset 0 -50px 80px -60px rgba(196,104,58,.4), 0 30px 60px -34px rgba(110,70,40,.45);
+}
+#dog-shows .info-card + .info-card {
+  background:
+    radial-gradient(90% 60% at 0% 0%, rgba(223,231,204,.35), rgba(223,231,204,0) 60%),
+    radial-gradient(60% 55% at 100% 0%, rgba(233,178,74,.35), rgba(233,178,74,0) 65%),
+    radial-gradient(95% 80% at 0% 100%, rgba(238,138,80,.75), rgba(238,138,80,0) 65%),
+    linear-gradient(160deg, #6b8c40 0%, #4a6229 50%, #3a3b1f 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 30px 60px -30px rgba(70,50,25,.7);
+}
+#dog-shows .info-card::before { background: radial-gradient(80% 70% at 100% 100%, rgba(238,138,80,.45), rgba(238,138,80,0) 70%); }
+#dog-shows .info-card + .info-card::before { background: radial-gradient(80% 70% at 100% 100%, rgba(246,190,130,.4), rgba(246,190,130,0) 70%); }
+
+/* ==========================================================================
+   Gradient glass for About › Governance documents and Contact us, and
+   Support › Donate. Three colourways, mixed across each set:
+   green (cream into sage and Olivine), warm (cream into peach and apricot)
+   and dark (moss with an orange glow, light text). A glow fades in on hover.
+   ========================================================================== */
+#documents .doc, #contact .info-card, #donate .info-card, #donate .donate-contact {
+  --c1: #f7f6ef; --c2: #e4ebd5; --c3: #c6d6a8;
+  --a1: rgba(159,184,120,.6); --a2: rgba(238,138,80,.2); --glow: rgba(159,184,120,.55);
+  position: relative; overflow: hidden; isolation: isolate;
+  background:
+    radial-gradient(90% 70% at 0% 0%, rgba(255,255,255,.85), rgba(255,255,255,0) 60%),
+    radial-gradient(60% 75% at 100% 0%, var(--a1), rgba(255,255,255,0) 65%),
+    radial-gradient(70% 75% at 100% 100%, var(--a2), rgba(255,255,255,0) 65%),
+    linear-gradient(150deg, var(--c1) 0%, var(--c2) 55%, var(--c3) 100%);
+  border: 1px solid rgba(255,255,255,.85);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 26px 50px -30px rgba(70,60,35,.5);
+  transition: transform var(--soft), box-shadow var(--soft);
+}
+/* warm */
+#documents li:nth-child(even) .doc, #contact .info-card:nth-child(2), #donate .info-card:nth-child(2), #donate .donate-contact {
+  --c1: #fbf6ee; --c2: #f6e0c8; --c3: #ecbf98;
+  --a1: rgba(159,184,120,.38); --a2: rgba(238,138,80,.5); --glow: rgba(238,138,80,.45);
+}
+/* dark */
+#contact .info-card:nth-child(3), #donate .info-card:nth-child(3) {
+  --c1: #6b8c40; --c2: #4a6229; --c3: #3a3b1f;
+  --a1: rgba(233,178,74,.32); --a2: rgba(238,138,80,.7); --glow: rgba(246,190,130,.4);
+  color: var(--paper); border-color: rgba(255,255,255,.22);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 30px 56px -28px rgba(70,50,25,.7);
+}
+#contact .info-card:nth-child(3) .h3, #donate .info-card:nth-child(3) .h3 { color: var(--paper); }
+#contact .info-card:nth-child(3) .muted, #donate .info-card:nth-child(3) .muted,
+#contact .info-card:nth-child(3) p, #donate .info-card:nth-child(3) p { color: rgba(247,246,240,.85); }
+
+#documents .doc::before, #contact .info-card::before, #donate .info-card::before, #donate .donate-contact::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; opacity: 0;
+  background: radial-gradient(70% 90% at 100% 100%, var(--glow), rgba(255,255,255,0) 70%);
+  transition: opacity .9s var(--ease);
+}
+#documents .doc:hover::before, #contact .info-card:hover::before, #donate .info-card:hover::before, #donate .donate-contact:hover::before { opacity: 1; }
+#contact .info-card:hover, #donate .info-card:hover { transform: translateY(-3px); }
+
+/* Document rows: the gradient runs along the row; the PDF tag and the arrow
+   become little green buttons. */
+#documents .doc { background:
+    radial-gradient(40% 140% at 0% 0%, rgba(255,255,255,.85), rgba(255,255,255,0) 70%),
+    radial-gradient(35% 160% at 100% 0%, var(--a1), rgba(255,255,255,0) 70%),
+    radial-gradient(30% 160% at 100% 100%, var(--a2), rgba(255,255,255,0) 70%),
+    linear-gradient(100deg, var(--c1) 0%, var(--c2) 60%, var(--c3) 100%); }
+#documents .doc::before { background: radial-gradient(45% 160% at 100% 50%, var(--glow), rgba(255,255,255,0) 70%); }
+#documents .doc-ic { background: var(--moss); color: var(--paper); border-color: transparent; box-shadow: 0 6px 14px -8px rgba(55,68,38,.8); }
+#documents .doc > svg {
+  flex: none; box-sizing: content-box; padding: 11px; border-radius: 50%;
+  background: rgba(255,255,255,.55); border: 1px solid rgba(255,255,255,.9);
+  transition: transform .8s var(--ease), background-color .8s var(--ease), color .8s var(--ease);
+}
+#documents .doc:hover > svg { transform: rotate(45deg); background: var(--brown); color: var(--paper); }
+
+
+/* ==========================================================================
+   Support › 500 Club and About › Meet the team: the same gradient colourways
+   as the Contact and Donate cards (green, warm, dark). Team cards keep their
+   overflow visible so the hover bios can show above them.
+   ========================================================================== */
+#\35 00-club .prize, #\35 00-club .info-card, #team .member {
+  --c1: #f7f6ef; --c2: #e4ebd5; --c3: #c6d6a8;
+  --a1: rgba(159,184,120,.6); --a2: rgba(238,138,80,.2); --glow: rgba(159,184,120,.55);
+  position: relative; isolation: isolate;
+  background:
+    radial-gradient(90% 70% at 0% 0%, rgba(255,255,255,.85), rgba(255,255,255,0) 60%),
+    radial-gradient(60% 75% at 100% 0%, var(--a1), rgba(255,255,255,0) 65%),
+    radial-gradient(70% 75% at 100% 100%, var(--a2), rgba(255,255,255,0) 65%),
+    linear-gradient(150deg, var(--c1) 0%, var(--c2) 55%, var(--c3) 100%);
+  border: 1px solid rgba(255,255,255,.85);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 26px 50px -30px rgba(70,60,35,.5);
+}
+#\35 00-club .prize, #\35 00-club .info-card { overflow: hidden; }
+/* warm */
+#\35 00-club .prize:nth-child(3), #\35 00-club .info-card:nth-child(2), #team .member:nth-child(even) {
+  --c1: #fbf6ee; --c2: #f6e0c8; --c3: #ecbf98;
+  --a1: rgba(159,184,120,.38); --a2: rgba(238,138,80,.5); --glow: rgba(238,138,80,.45);
+}
+/* dark: the £15 ticket and "Draws" */
+#\35 00-club .prize-main, #\35 00-club .info-card:nth-child(3) {
+  --c1: #6b8c40; --c2: #4a6229; --c3: #3a3b1f;
+  --a1: rgba(233,178,74,.32); --a2: rgba(238,138,80,.7); --glow: rgba(246,190,130,.4);
+  color: var(--paper); border-color: rgba(255,255,255,.22);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 30px 56px -28px rgba(70,50,25,.7);
+}
+#\35 00-club .info-card:nth-child(3) .h3, #\35 00-club .info-card:nth-child(3) p { color: var(--paper); }
+#\35 00-club .prize-main small { color: rgba(247,246,240,.78); }
+#\35 00-club .prize-main .prize-amt { color: #f2c79c; }
+
+#\35 00-club .prize::before, #\35 00-club .info-card::before, #team .member::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; opacity: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(70% 90% at 100% 100%, var(--glow), rgba(255,255,255,0) 70%);
+  transition: opacity .9s var(--ease);
+}
+#\35 00-club .prize:hover::before, #\35 00-club .info-card:hover::before,
+#team .member:hover::before, #team .member:focus-within::before { opacity: 1; }
+#\35 00-club .prize:hover, #\35 00-club .info-card:hover { transform: translateY(-3px); }
+#team .member .tag { background: rgba(255,255,255,.45); border-color: rgba(44,54,32,.22); }
+
+
+/* ==========================================================================
+   Card stacks for Support › Donate and About › Contact us
+   (components/CardStack.jsx). The intro stays put on the left while the
+   cards slide up and stack on the right. Colourways cycle green, warm, dark.
+   ========================================================================== */
+.stack-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+.stack-intro { position: sticky; top: 170px; display: grid; gap: 18px; justify-items: start; }
+.stack-intro .lede { margin: 0; }
+.stack-intro .donate-contact { margin-top: 10px; }
+.card-stack { --stack-top: 168px; list-style: none; display: grid; gap: 18vh; }
+.stk-card {
+  --c1: #f7f6ef; --c2: #e4ebd5; --c3: #c6d6a8;
+  --a1: rgba(159,184,120,.6); --a2: rgba(238,138,80,.2);
+  --k: var(--muted); --t: #3d4830;
+  position: sticky; top: calc(var(--stack-top) + var(--i) * 16px);
+  min-height: 230px; padding: clamp(26px, 3.2vw, 44px);
+  border-radius: var(--r-lg); overflow: hidden; isolation: isolate; color: var(--ink);
+  background:
+    radial-gradient(90% 70% at 0% 0%, rgba(255,255,255,.85), rgba(255,255,255,0) 60%),
+    radial-gradient(60% 75% at 100% 0%, var(--a1), rgba(255,255,255,0) 65%),
+    radial-gradient(70% 75% at 100% 100%, var(--a2), rgba(255,255,255,0) 65%),
+    linear-gradient(150deg, var(--c1) 0%, var(--c2) 55%, var(--c3) 100%);
+  border: 1px solid rgba(255,255,255,.85);
+  -webkit-backdrop-filter: blur(22px) saturate(1.3); backdrop-filter: blur(22px) saturate(1.3);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 -10px 30px -18px rgba(44,54,32,.25), 0 30px 60px -32px rgba(70,60,35,.5);
+  transform: scale(calc(1 - var(--depth, 0) * .035)); transform-origin: 50% 0; will-change: transform;
+}
+.stk-card::after {
+  content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none; border-radius: inherit;
+  background: rgba(26,34,18,1); opacity: calc(min(var(--depth, 0), 2) * .06);
+}
+.stk-card:nth-child(3n+2) { --c1: #fbf6ee; --c2: #f6e0c8; --c3: #ecbf98; --a1: rgba(159,184,120,.38); --a2: rgba(238,138,80,.5); }
+.stk-card:nth-child(3n) {
+  --c1: #6b8c40; --c2: #4a6229; --c3: #3a3b1f; --a1: rgba(233,178,74,.32); --a2: rgba(238,138,80,.7);
+  --k: rgba(223,231,204,.85); --t: rgba(247,246,240,.86);
+  color: var(--paper); border-color: rgba(255,255,255,.22);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 -10px 30px -18px rgba(44,54,32,.3), 0 30px 56px -28px rgba(70,50,25,.7);
+}
+.stk-card article { display: grid; gap: 10px; justify-items: start; }
+.stk-k { font-size: 12.5px; letter-spacing: .16em; color: var(--k); margin-bottom: 6px; }
+.stk-card h3 { font-family: var(--font-head); font-weight: 400; font-size: clamp(28px, 3vw, 42px); line-height: 1.02; letter-spacing: -0.03em; margin-bottom: 6px; }
+.stk-card p:not(.stk-k) { color: var(--t); font-size: clamp(16.5px, 1.35vw, 18.5px); line-height: 1.5; max-width: 46ch; margin: 0; }
+.stk-card p.small { font-size: 16px; }
+.stk-card a { color: inherit; }
+@media (max-width: 900px) {
+  .stack-layout { grid-template-columns: 1fr; }
+  .stack-intro { position: static; }
+  .card-stack { --stack-top: 150px; gap: 14vh; }
+}
+@media (prefers-reduced-motion: reduce) { .stk-card { transform: none; } .stk-card::after { display: none; } }
+
+/* Support › Volunteer, simplified: one soft card, the ask on the left
+   (heading, one line, two buttons), the roles as a plain list on the right. */
+.vol-card {
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 80px); align-items: start;
+  padding: clamp(28px, 4vw, 56px); border-radius: var(--r-lg);
+  background:
+    radial-gradient(80% 90% at 100% 100%, rgba(159,184,120,.35), rgba(159,184,120,0) 65%),
+    linear-gradient(150deg, #f8f7f1 0%, #eef0e2 100%);
+  border: 1px solid rgba(255,255,255,.9);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 30px 60px -40px rgba(44,54,32,.45);
+}
+.vol-main > p:not(.eyebrow) { color: var(--muted); font-size: 18px; max-width: 34ch; }
+.vol-main .display { margin-bottom: 16px; }
+.vol-main .cta-row { margin-top: 26px; }
+.vol-side .tick-list { margin-top: 4px; font-size: 17px; }
+.vol-side p { margin-top: 14px; font-size: 15.5px; }
+@media (max-width: 860px) { .vol-card { grid-template-columns: 1fr; } }
+
+/* What's on › Upcoming events: one simple card per event, in the style of
+   Hire › What we charge (date pills, big title, a line, the details, and a big
+   arrow for the main link). Cards alternate green and warm. On hover a card
+   lifts, its glow brightens and drifts, and the arrow turns. */
+.ev-cards { list-style: none; display: grid; gap: 20px; }
+.ev-card { scroll-margin-top: 170px; transition: transform .8s var(--ease), box-shadow .8s var(--ease); }
+.ev-warm {
+  background:
+    radial-gradient(60% 90% at 100% 0%, rgba(238,138,80,.45) 0%, rgba(238,138,80,0) 60%),
+    radial-gradient(55% 80% at 0% 100%, rgba(159,184,120,.3) 0%, rgba(159,184,120,0) 60%),
+    radial-gradient(80% 70% at 30% 0%, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 60%),
+    linear-gradient(135deg, #f7f2ea 0%, #f4e2cd 45%, #ecc29d 100%);
+}
+.ev-warm::before { background: radial-gradient(circle at 40% 40%, rgba(238,138,80,.45), rgba(238,138,80,0) 70%); }
+.ev-card::after {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0; border-radius: inherit;
+  background: radial-gradient(70% 90% at 100% 100%, rgba(255,255,255,.55), rgba(255,255,255,0) 60%);
+  transition: opacity .9s var(--ease);
+}
+.ev-card:hover { transform: translateY(-4px); box-shadow: inset 0 1px 0 rgba(255,255,255,.95), inset 0 -40px 80px -60px rgba(71,98,42,.35), 0 50px 90px -46px rgba(44,54,32,.6); }
+.ev-card:hover::after { opacity: 1; }
+.ev-card:hover .price-arrow { transform: rotate(45deg) scale(1.05); }
+.ev-card .price-tags { margin-bottom: clamp(22px, 3vw, 36px); }
+.price-title.ev-title { font-size: clamp(36px, 5.2vw, 76px); line-height: .98; }
+.ev-copy { display: grid; gap: 10px; max-width: 60ch; }
+.ev-copy p { color: #3d4830; font-size: clamp(16.5px, 1.4vw, 19px); line-height: 1.5; }
+.ev-copy p.muted { color: var(--muted); font-size: 15px; }
+.ev-card .stalls { margin-top: 4px; }
+.ev-card .stall-col { background: rgba(255,255,255,.5); }
+.ev-actions { flex: none; display: grid; justify-items: end; gap: 14px; }
+.ev-more {
+  display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px;
+  text-decoration: none; font-size: 14.5px; color: var(--ink);
+  background: rgba(255,255,255,.45); border: 1px solid rgba(255,255,255,.9);
+  transition: background-color .7s var(--ease), color .7s var(--ease);
+}
+.ev-more:hover { background: var(--brown-2); color: var(--paper); }
+@media (max-width: 700px) { .ev-actions { justify-items: start; } .ev-card .price-foot { align-items: flex-start; } }
+@media (prefers-reduced-motion: reduce) { .ev-card, .ev-card::after { transition: none; } .ev-card:hover { transform: none; } }
+
+/* Governance documents, simpler: one soft white-to-sage wash on every row,
+   with a gentle glow on hover. */
+#documents .doc, #documents li:nth-child(even) .doc {
+  background: linear-gradient(100deg, rgba(255,255,255,.85) 0%, #f1f3e8 55%, #e2e9d2 100%);
+}
+#documents .doc::before { background: radial-gradient(40% 160% at 100% 50%, rgba(159,184,120,.35), rgba(255,255,255,0) 70%); }
+
+
+/* ==========================================================================
+   Hire › Rooms & facilities (components/RoomFan.jsx): six arched cards fanned
+   like a hand of cards, each overlapping the one to its left. --off is the
+   card's place from the middle (-2.5 to 2.5): it sets the spread, the arc and
+   the tilt. A clicked card (.is-open) rises out of the fan and straightens.
+   Photos rest at 50%; full strength on the open card.
+   ========================================================================== */
+.room-fan {
+  --card-w: clamp(196px, 20vw, 262px); --card-h: calc(var(--card-w) * 1.48);
+  --spread: calc(var(--card-w) * .6);
+  position: relative; height: calc(var(--card-h) + 76px); margin-top: 0;
+}
+.fan-room {
+  --c1: #f7f6ef; --c2: #e4ebd5; --c3: #c6d6a8;
+  --a1: rgba(159,184,120,.6); --a2: rgba(238,138,80,.2);
+  --k: var(--muted); --t: #3d4830; --lift: 0px;
+  position: absolute; left: 50%; bottom: 28px; z-index: calc(var(--i) + 1);
+  width: var(--card-w); height: var(--card-h); margin-left: calc(var(--card-w) / -2);
+  display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
+  padding: 34px 22px 24px; text-align: left; font: inherit; color: var(--ink); cursor: pointer;
+  border-radius: 92px 92px 26px 26px; overflow: hidden; isolation: isolate;
+  background:
+    radial-gradient(90% 60% at 0% 0%, rgba(255,255,255,.85), rgba(255,255,255,0) 60%),
+    radial-gradient(70% 60% at 100% 0%, var(--a1), rgba(255,255,255,0) 65%),
+    radial-gradient(80% 60% at 100% 100%, var(--a2), rgba(255,255,255,0) 65%),
+    linear-gradient(160deg, var(--c1) 0%, var(--c2) 55%, var(--c3) 100%);
+  border: 1px solid rgba(255,255,255,.85);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), -14px 18px 40px -22px rgba(44,54,32,.45);
+  transform-origin: 50% 100%;
+  transform:
+    translateX(calc(var(--off) * var(--spread)))
+    translateY(calc(var(--off) * var(--off) * 7px + var(--lift)))
+    rotate(calc(var(--off) * 5deg));
+  transition: transform .8s cubic-bezier(.2, 1, .3, 1), box-shadow .8s var(--ease), filter .8s var(--ease);
+}
+.fan-room-2 { --c1: #fbf6ee; --c2: #f6e0c8; --c3: #ecbf98; --a1: rgba(159,184,120,.38); --a2: rgba(238,138,80,.5); }
+.fan-room-3 {
+  --c1: #6b8c40; --c2: #4a6229; --c3: #3a3b1f; --a1: rgba(233,178,74,.32); --a2: rgba(238,138,80,.7);
+  --k: rgba(223,231,204,.85); --t: rgba(247,246,240,.86);
+  color: var(--paper); border-color: rgba(255,255,255,.22);
+}
+.fan-room:hover { --lift: -22px; }
+.fan-room:focus-visible { outline: 2px solid var(--brown-2); outline-offset: 4px; }
+/* The open card rises out of the fan, straightens and comes to the front. */
+.fan-room.is-open {
+  z-index: 20; cursor: zoom-out;
+  transform: translateX(calc(var(--off) * var(--spread) * .55)) translateY(-56px) rotate(0deg) scale(1.08);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 50px 90px -40px rgba(44,54,32,.65);
+}
+.room-fan.has-open .fan-room:not(.is-open) { --lift: 18px; filter: saturate(.85) brightness(.97); }
+.fan-room-photo {
+  flex: none; display: block; width: calc(var(--card-w) * .44); aspect-ratio: 1; border-radius: 50%; overflow: hidden;
+  background: rgba(255,255,255,.4); margin-bottom: 8px;
+  box-shadow: 0 0 0 5px rgba(255,255,255,.6), 0 14px 28px -16px rgba(44,54,32,.6);
+}
+.fan-room-3 .fan-room-photo { box-shadow: 0 0 0 5px rgba(255,255,255,.22), 0 14px 28px -16px rgba(0,0,0,.6); }
+.fan-room-photo img { width: 100%; height: 100%; object-fit: cover; opacity: .5; transition: opacity .9s var(--ease); }
+.fan-room.is-open .fan-room-photo img, .fan-room:hover .fan-room-photo img { opacity: 1; }
+.fan-room-k { font-size: 11.5px; letter-spacing: .16em; color: var(--k); }
+/* At rest only the left part of each card shows, so the name keeps to it. */
+.fan-room-name {
+  font-family: var(--font-head); font-size: clamp(19px, 1.6vw, 23px); line-height: 1.05; letter-spacing: -0.02em;
+  max-width: calc(var(--spread) - 30px); transition: max-width .8s var(--ease);
+}
+.fan-room-text {
+  font-size: 15px; line-height: 1.45; color: var(--t);
+  opacity: 0; transform: translateY(8px); transition: opacity .6s var(--ease), transform .6s var(--ease);
+}
+.fan-room.is-open .fan-room-name { max-width: none; }
+.fan-room.is-open .fan-room-text { opacity: 1; transform: none; transition-delay: .2s; }
+/* The last card isn't covered, so its name can use the full width. */
+.fan-room:last-child .fan-room-name { max-width: none; }
+.fan-hint { text-align: center; margin-top: -4px; }
+
+/* Phones: a row of full cards to swipe through, every description showing. */
+@media (max-width: 700px) {
+  .room-fan {
+    height: auto; display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin-inline: calc(var(--gutter) * -1); padding: 10px var(--gutter) 24px; scrollbar-width: none;
+  }
+  .room-fan::-webkit-scrollbar { display: none; }
+  .fan-room, .fan-room.is-open {
+    position: relative; left: auto; bottom: auto; margin: 0; flex: 0 0 74vw; height: auto; min-height: 380px;
+    transform: none; scroll-snap-align: center; cursor: default;
+  }
+  .room-fan.has-open .fan-room:not(.is-open) { filter: none; }
+  .fan-room-photo { width: 120px; }
+  .fan-room-name { max-width: none; }
+  .fan-room-text { opacity: 1; transform: none; }
+  .fan-hint { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .fan-room, .fan-room-text { transition: none; } }
+
+/* ---------- "On this page" bar: dark green with light text ---------- */
+.jump-links .wrap {
+  background:
+    radial-gradient(60% 140% at 100% 0%, rgba(159,184,120,.3), rgba(159,184,120,0) 60%),
+    linear-gradient(100deg, #4f6c2d 0%, #3e5426 55%, #2f3c21 100%);
+  border: 1px solid rgba(255,255,255,.16);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 18px 40px -22px rgba(44,54,32,.7);
+  color: var(--paper);
+}
+.jump-label { color: rgba(223,231,204,.72); }
+.jump-links a { color: rgba(247,246,240,.92); }
+.jump-links a:hover, .jump-links a:focus-visible { background: rgba(255,255,255,.12); color: #fff; }
+
+/* ---------- Check availability card (Bits.jsx AvailabilityCard) ---------- */
+.avail-card {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 20px;
+  margin-top: 26px; padding: clamp(24px, 2.6vw, 34px); border-radius: var(--r-lg);
+  color: var(--paper); text-decoration: none;
+  background:
+    radial-gradient(70% 90% at 100% 100%, rgba(238,138,80,.6), rgba(238,138,80,0) 65%),
+    radial-gradient(60% 80% at 100% 0%, rgba(233,178,74,.3), rgba(233,178,74,0) 60%),
+    radial-gradient(80% 70% at 0% 0%, rgba(159,184,120,.45), rgba(159,184,120,0) 60%),
+    linear-gradient(150deg, #6b8c40 0%, #4a6229 50%, #3a3b1f 100%);
+  border: 1px solid rgba(255,255,255,.2);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 34px 60px -30px rgba(70,50,25,.75);
+  transition: transform .8s var(--ease), box-shadow .8s var(--ease);
+}
+.avail-card::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; opacity: 0;
+  background: radial-gradient(60% 90% at 90% 100%, rgba(246,190,130,.45), rgba(246,190,130,0) 70%);
+  transition: opacity .9s var(--ease);
+}
+.avail-card:hover { transform: translateY(-4px); box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 44px 80px -34px rgba(70,50,25,.85); }
+.avail-card:hover::before { opacity: 1; }
+.avail-text { display: grid; gap: 10px; }
+.avail-title { font-family: var(--font-head); font-size: clamp(30px, 3vw, 44px); line-height: 1; letter-spacing: -0.03em; }
+.avail-sub { font-size: 16.5px; line-height: 1.45; color: rgba(247,246,240,.85); max-width: 36ch; }
+.avail-arrow {
+  flex: none; display: grid; place-items: center; width: clamp(60px, 5.4vw, 76px); aspect-ratio: 1; border-radius: 50%;
+  background: var(--paper); color: var(--brown-2);
+  box-shadow: 0 14px 28px -14px rgba(0,0,0,.6);
+  transition: transform .8s var(--ease);
+}
+.avail-card:hover .avail-arrow { transform: rotate(45deg) scale(1.05); }
+.avail-card:focus-visible { outline: 2px solid var(--brown-2); outline-offset: 4px; }
+.avail-wide { margin-top: clamp(28px, 4vw, 48px); align-items: center; padding: clamp(28px, 3.6vw, 48px); }
+.avail-wide .avail-title { font-size: clamp(36px, 5vw, 72px); }
+.avail-wide .avail-sub { font-size: clamp(16.5px, 1.4vw, 19px); max-width: 48ch; }
+.avail-wide .avail-arrow { width: clamp(70px, 6.4vw, 92px); }
+@media (max-width: 560px) { .avail-card { flex-direction: column; align-items: flex-start; } }
+
+/* ---------- About › Next meeting as a warm gradient card ---------- */
+.meeting-card {
+  display: grid; grid-template-columns: auto 1fr; gap: clamp(28px, 5vw, 72px); align-items: center;
+  padding: clamp(28px, 4vw, 56px); border-radius: var(--r-lg); position: relative; overflow: hidden; isolation: isolate;
+  background:
+    radial-gradient(60% 90% at 100% 0%, rgba(238,138,80,.45) 0%, rgba(238,138,80,0) 60%),
+    radial-gradient(55% 80% at 0% 100%, rgba(159,184,120,.35) 0%, rgba(159,184,120,0) 60%),
+    radial-gradient(80% 70% at 30% 0%, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 60%),
+    linear-gradient(135deg, #f7f2ea 0%, #f4e2cd 45%, #ecc29d 100%);
+  border: 1px solid rgba(255,255,255,.9);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 40px 80px -46px rgba(110,70,40,.55);
+}
+.meeting-card .price-tags { margin-bottom: 18px; }
+.price-title.meeting-title { font-size: clamp(36px, 5vw, 72px); line-height: .98; margin-bottom: 18px; padding-bottom: 18px; }
+.meeting-copy .lede { color: #3d4830; max-width: none; }
+@media (max-width: 700px) { .meeting-card { grid-template-columns: 1fr; } }
+
+/* ---------- About › Contact us: heading above, wide cards underneath ---------- */
+.stack-layout.stack-full { grid-template-columns: 1fr; gap: clamp(24px, 3vw, 40px); }
+.stack-full .stack-intro { position: static; }
+.stack-full .stk-head, .stack-full .stk-detail { display: grid; gap: 10px; justify-items: start; align-content: start; }
+@media (min-width: 761px) {
+  .stack-full .stk-card article { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); column-gap: clamp(28px, 5vw, 72px); }
+}
+
+/* Volunteer: richer gradients. The card washes from white through sage to
+   Olivine with a peach glow; the list of roles sits in its own warm glass panel. */
+.vol-card {
+  position: relative; overflow: hidden; isolation: isolate;
+  background:
+    radial-gradient(90% 70% at 0% 0%, rgba(255,255,255,.9), rgba(255,255,255,0) 60%),
+    radial-gradient(60% 80% at 100% 0%, rgba(159,184,120,.7), rgba(159,184,120,0) 65%),
+    radial-gradient(55% 70% at 0% 100%, rgba(238,138,80,.32), rgba(238,138,80,0) 65%),
+    linear-gradient(150deg, #f6f5ec 0%, #e3ead2 55%, #c6d6a8 100%);
+}
+.vol-side {
+  padding: clamp(22px, 2.6vw, 34px); border-radius: var(--r-lg);
+  background:
+    radial-gradient(80% 70% at 100% 100%, rgba(238,138,80,.5), rgba(238,138,80,0) 65%),
+    radial-gradient(70% 60% at 0% 0%, rgba(255,255,255,.85), rgba(255,255,255,0) 60%),
+    linear-gradient(150deg, rgba(251,246,238,.92) 0%, rgba(246,224,200,.9) 60%, rgba(236,191,152,.9) 100%);
+  border: 1px solid rgba(255,255,255,.9);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 24px 50px -30px rgba(110,70,40,.5);
+}
+.vol-side .tick-list { margin-top: 0; }
+.vol-side .muted { color: #5c5443; }
+
+/* ---------- Hire › Booking calendar: the Hallmaster calendar in a branded frame ---------- */
+.cal-frame {
+  position: relative; overflow: hidden; border-radius: var(--r-lg);
+  background: #fff; border: 1px solid rgba(255,255,255,.85);
+  box-shadow: 0 0 0 6px rgba(255,255,255,.45), 0 40px 80px -44px rgba(44,54,32,.6);
+}
+.cal-bar {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 14px 16px 14px 24px; color: var(--paper);
+  background:
+    radial-gradient(60% 160% at 100% 0%, rgba(238,138,80,.45), rgba(238,138,80,0) 60%),
+    radial-gradient(50% 160% at 0% 0%, rgba(159,184,120,.4), rgba(159,184,120,0) 60%),
+    linear-gradient(100deg, #5d7d37 0%, #47622a 50%, #374426 100%);
+}
+.cal-live { display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; }
+.cal-live i { width: 8px; height: 8px; border-radius: 50%; background: #b9e08a; box-shadow: 0 0 0 4px rgba(185,224,138,.25); animation: cal-pulse 2.4s ease-in-out infinite; }
+@keyframes cal-pulse { 50% { box-shadow: 0 0 0 7px rgba(185,224,138,0); } }
+.cal-open {
+  display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px;
+  font-size: 14.5px; white-space: nowrap; text-decoration: none; color: var(--brown-2); background: var(--paper);
+  transition: transform .6s var(--ease), background-color .6s var(--ease);
+}
+.cal-open:hover { transform: translateY(-1px); background: #fff; }
+.cal-iframe { display: block; width: 100%; height: clamp(760px, 92vh, 1000px); border: 0; background: #fff; }
+@media (max-width: 700px) {
+  .cal-bar { padding: 10px 10px 10px 16px; }
+  .cal-live { font-size: 11px; letter-spacing: .1em; gap: 8px; }
+  .cal-open { font-size: 13.5px; padding: 8px 13px; }
+  .cal-iframe { height: 820px; }
+}
+@media (prefers-reduced-motion: reduce) { .cal-live i { animation: none; } }
+
+/* Document pills (PDF / DOC) share one width so the titles line up. */
+.doc-ic { min-width: 54px; text-align: center; }

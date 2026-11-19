@@ -6,7 +6,18 @@ export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="wrap footer-top">
-        <p className="footer-big">Bringing community <span className="thin">together.</span></p>
+        <p
+          className="footer-big"
+          onPointerMove={(e) => {
+            // Same orange glow as "Chieveley" at the top of the home page.
+            const word = e.currentTarget.querySelector('.glow-word');
+            const r = word.getBoundingClientRect();
+            word.style.setProperty('--mx', `${e.clientX - r.left}px`);
+            word.style.setProperty('--my', `${e.clientY - r.top}px`);
+          }}
+        >
+          <span className="glow-word">Bringing community</span> <span className="thin">together.</span>
+        </p>
         <a className="btn btn-outline-light" href={href('hire/how-to-book')}>Book the hall <Arrow /></a>
       </div>
       <div className="wrap footer-grid">

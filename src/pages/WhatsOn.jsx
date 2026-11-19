@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import ThumbnailCarousel from '../components/ThumbnailCarousel.jsx';
 import { SITE, CLASSES, CONTACTS, EVENTS, STALLHOLDERS, PAST_EVENT_PHOTOS, PHOTOS, img } from '../data/content.js';
 import { href } from '../router.js';
-import { PageHeader, JumpLinks, Photo, PersonLines, Arrow } from '../components/Bits.jsx';
+import { PageHeader, JumpLinks, PersonLines, Arrow } from '../components/Bits.jsx';
 
 const CATS = ['All', ...Array.from(new Set(CLASSES.map((c) => c.category)))];
 const CONTACT_BY_GROUP = Object.fromEntries(CONTACTS.map((g) => [g.group, g.people]));
@@ -15,7 +16,7 @@ export default function WhatsOn() {
 
   return (
     <>
-      <PageHeader photo="hero-whats-on" eyebrow="What's on" title="Classes, events" accent="& the Coffee Stop."
+      <PageHeader photo="hero-whats-on" pale eyebrow="What's on" title="Classes, events" accent="& the Coffee Stop."
         intro={`${CLASSES.length} groups meet at the hall every week, from cricket to whist and pilates to ecstatic dance. Each class lists its organiser, so you can get in touch directly.`} />
       <JumpLinks page="whats-on" links={[['classes', 'Weekly classes'], ['upcoming', 'Upcoming events'], ['past', 'Past events']]} />
 
@@ -73,49 +74,56 @@ export default function WhatsOn() {
           {upcoming.length === 0 ? (
             <p className="lede">No events are listed just now. Check back soon.</p>
           ) : (
-            <ol className="event-list">
-              {upcoming.map((e) => (
-                <li key={e.id} id={`event-${e.id}`} className="event">
-                  <div className="event-media">
-                    <Photo src={PHOTOS[`event-${e.id}`] && img(PHOTOS[`event-${e.id}`], 900)} label={e.title} />
-                    <div className="event-date glass" aria-hidden="true">
-                      <span className="ed-day">{e.day}</span>
-                      <span className="ed-mon">{e.month}</span>
-                    </div>
-                  </div>
-                  <div className="event-body">
-                    <p className="eyebrow">{e.when}</p>
-                    <h3 className="h3">{e.title}</h3>
-                    <p>{e.text}</p>
-                    {e.note && <p className="muted small">{e.note}</p>}
-                    {e.stallholders && (
-                      <details className="stalls">
-                        <summary>Last year's stallholders</summary>
-                        <div className="stall-cols">
-                          {Object.entries(STALLHOLDERS).map(([k, list]) => (
-                            <div key={k} className="stall-col">
-                              <h4>{k}</h4>
-                              <ul>{list.map((s) => <li key={s}>{s}</li>)}</ul>
+            <ul className="ev-cards">
+              {upcoming.map((e, i) => {
+                const [main, ...more] = e.links;
+                const linkProps = (l) => ({
+                  href: l.to ? href(l.to) : l.url,
+                  ...(l.url && l.url.startsWith('http') ? { target: '_blank', rel: 'noreferrer' } : {}),
+                });
+                return (
+                  <li key={e.id} id={`event-${e.id}`} className={`price-card ev-card${i % 2 ? ' ev-warm' : ''}`}>
+                    <ul className="price-tags">
+                      <li className="is-dark">{e.day} {e.month}</li>
+                      <li>{e.when}</li>
+                    </ul>
+                    <h3 className="price-title ev-title">{e.title}</h3>
+                    <div className="price-foot">
+                      <div className="ev-copy">
+                        <p>{e.text}</p>
+                        {e.note && <p className="muted small">{e.note}</p>}
+                        {e.stallholders && (
+                          <details className="stalls">
+                            <summary>Last year's stallholders</summary>
+                            <div className="stall-cols">
+                              {Object.entries(STALLHOLDERS).map(([k, list]) => (
+                                <div key={k} className="stall-col">
+                                  <h4>{k}</h4>
+                                  <ul>{list.map((st) => <li key={st}>{st}</li>)}</ul>
+                                </div>
+                              ))}
                             </div>
+                          </details>
+                        )}
+                      </div>
+                      {main && (
+                        <div className="ev-actions">
+                          <a className="price-go" {...linkProps(main)}>
+                            <span>{main.label}</span>
+                            <span className="price-arrow" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17 17 7M8 7h9v9" /></svg>
+                            </span>
+                          </a>
+                          {more.map((l) => (
+                            <a key={l.label} className="ev-more" {...linkProps(l)}>{l.label} <Arrow /></a>
                           ))}
                         </div>
-                      </details>
-                    )}
-                    {e.links.length > 0 && (
-                      <div className="event-links">
-                        {e.links.map((l) => (
-                          <a key={l.label} className={`btn ${l.primary ? 'btn-primary' : 'btn-ghost'}`}
-                            href={l.to ? href(l.to) : l.url}
-                            {...(l.url && l.url.startsWith('http') ? { target: '_blank', rel: 'noreferrer' } : {})}>
-                            {l.label}{l.primary && <Arrow />}
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </li>
-              ))}
-            </ol>
+                      )}
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
           )}
         </div>
       </section>
@@ -130,9 +138,12 @@ export default function WhatsOn() {
             </div>
             <p className="muted">From Darth Vader to Dick Whittington, Christmas lunches to UK pet shows.</p>
           </div>
-          <div className="masonry">
-            {PAST_EVENT_PHOTOS.map((p, i) => <Photo key={p} label={p} shape="soft" tone={['pink', 'mint', 'butternut'][i % 3]} />)}
-          </div>
+          <ThumbnailCarousel
+            label="Photos from past events"
+            items={PAST_EVENT_PHOTOS.filter((p) => PHOTOS[p]).map((p) => ({
+              label: p, src: img(PHOTOS[p], 1800), thumb: img(PHOTOS[p], 200),
+            }))}
+          />
         </div>
       </section>
     </>

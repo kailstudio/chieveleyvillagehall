@@ -5,8 +5,24 @@ import mainHallKitchen from '../assets/photos/main-hall-kitchen.jpg';
 import clubRoom from '../assets/photos/club-room.jpg';
 import clubRoomEntrance from '../assets/photos/club-room-entrance.jpg';
 import clubRoomBar from '../assets/photos/club-room-bar.jpg';
-import fieldsAroundChieveley from '../assets/photos/fields-around-chieveley.jpg';
 import donateSeedling from '../assets/photos/donate-seedling.jpg';
+import mainHallIllustration from '../assets/photos/main-hall-illustration.jpg';
+import cricketClub from '../assets/photos/cricket-club.jpg';
+import playground from '../assets/photos/playground.jpg';
+import heroHome from '../assets/photos/hero-home.jpg';
+import villageChurchStreet from '../assets/photos/village-church-street.jpg';
+import villageGreen from '../assets/photos/village-green.jpg';
+import fourWaysInHall from '../assets/photos/four-ways-in-hall.jpg';
+import coffeeStop from '../assets/photos/coffee-stop.jpg';
+import donateBand from '../assets/photos/donate-band.jpg';
+import whatsOnDancers from '../assets/photos/whats-on-dancers.jpg';
+import hireGardenTea from '../assets/photos/hire-garden-tea.jpg';
+import supportCanal from '../assets/photos/support-canal.jpg';
+import aboutWalledGarden from '../assets/photos/about-walled-garden.jpg';
+// Soft gradient illustrations for the What's on events (shown in circles).
+import eventFireworks from '../assets/events/fireworks.svg';
+import eventAgm from '../assets/events/agm.svg';
+import eventChristmas from '../assets/events/christmas-market.svg';
 
 // ---------------------------------------------------------------------------
 // All site copy lives here so the hall team can update it in one place.
@@ -26,9 +42,14 @@ export const SITE = {
   mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Chieveley+Village+Hall+High+Street+Chieveley+RG20+8TE',
   instagram: 'https://www.instagram.com/chieveleyvillagehall/',
   facebook: 'https://www.facebook.com/Chieveley/',
-  // The live booking calendar (rooms, availability, requests). Swap for the
-  // new booking system's URL if it moves.
-  bookingSystemUrl: 'https://www.chieveleyvillagehall.org/booking',
+  // The hall's Hallmaster booking calendar (rooms, availability, booking
+  // requests), hall number 11088. It is shown inside Hire › Booking calendar
+  // and opens full screen from there. Swap for the new URL if it ever moves.
+  bookingSystemUrl: 'https://v2.hallmaster.co.uk/Scheduler/View/11088',
+  // "What we charge" price list (Hire › Prices). The files the site links to
+  // live in public/files/ (copied from the old Wix site, November 2026). To
+  // update one, replace the file there, keeping its name, or change the link.
+  priceListUrl: './files/price-list-2026.pdf',
 };
 
 // Menu: four visitor tasks (see the October 2026 sitemap review). Each item's
@@ -42,7 +63,7 @@ export const NAV = [
   },
   {
     label: 'Hire the hall', to: 'hire',
-    children: [['rooms', 'Rooms & facilities'], ['prices', 'Prices'], ['how-to-book', 'How to book'], ['dog-shows', 'Dog shows & outdoor events'], ['reviews', 'What hirers say'], ['photos', 'Photos of the hall']],
+    children: [['rooms', 'Rooms & facilities'], ['prices', 'Prices'], ['how-to-book', 'How to book'], ['calendar', 'Booking calendar'], ['documents', 'Hirer documents'], ['dog-shows', 'Dog shows & outdoor events'], ['reviews', 'What hirers say'], ['photos', 'Photos of the hall']],
   },
   {
     label: 'Support us', to: 'support',
@@ -209,7 +230,7 @@ export const EVENTS = [
 ];
 
 // Photos of past events (What's on › Past events).
-export const PAST_EVENT_PHOTOS = ['Christmas lunch', 'Themed party', 'Pet show', 'Family celebration', 'Village event', 'Community gathering', 'Panto night', 'Summer on the grounds'];
+export const PAST_EVENT_PHOTOS = ['Christmas lunch', 'Pet show', 'Family celebration', 'Village event', 'Community gathering', 'Panto night', 'Summer on the grounds'];
 
 export const STALLHOLDERS = {
   'Arts & Crafts': ["Sam's Handmade Soaps", '3D Tinker Toys', 'Face Painting with Laura', "Amy's Polymer Jewellery", "Two Raven's Gem Stones"],
@@ -217,11 +238,21 @@ export const STALLHOLDERS = {
 };
 
 export const GOV_DOCS = [
-  { title: 'CRC Governing Document', note: 'Amended 10 September 2025', url: 'https://www.chieveleyvillagehall.org/_files/ugd/dcef2e_e7b19008449d4b5b975ddc031bb4a8c2.pdf' },
-  { title: 'Charity Registration Certificate', note: 'No. 296892', url: 'https://www.chieveleyvillagehall.org/_files/ugd/baf735_0a81bc15981e445e915aab0db4877bb0.pdf' },
-  { title: 'Accounts 2025', note: "Treasurer's consolidated submission to the AGM", url: 'https://www.chieveleyvillagehall.org/_files/ugd/dcef2e_92afac42f8b247648e458ecf85461c80.pdf' },
-  { title: 'Safeguarding Policy and Procedures', note: '2025', url: 'https://www.chieveleyvillagehall.org/_files/ugd/47ae83_c3628e52c34c4eb2abc97dbb35984188.pdf' },
-  { title: 'Fire Safety Policy', note: 'Issue 1, February 2025', url: 'https://www.chieveleyvillagehall.org/_files/ugd/dcef2e_daffb3c5f2464a2890104406f8c7ecfc.pdf' },
+  { title: 'CRC Governing Document', note: 'Amended 10 September 2025', url: './files/crc-governing-document.pdf' },
+  { title: 'Charity Registration Certificate', note: 'No. 296892', url: './files/charity-registration-certificate.pdf' },
+  { title: 'Accounts 2025', note: "Treasurer's consolidated submission to the AGM", url: './files/accounts-2025.pdf' },
+  { title: 'Safeguarding Policy and Procedures', note: '2025', url: './files/safeguarding-policy-2025.pdf' },
+  { title: 'Fire Safety Policy', note: 'Issue 1, February 2025', url: './files/fire-safety-policy-2025.pdf' },
+];
+
+// Hirer documents (Hire › Before you book). Files live in public/files/.
+export const HIRE_DOCS = [
+  { title: 'Conditions of Hire', note: 'The standard terms that apply to every booking', url: './files/conditions-of-hire.pdf' },
+  { title: "Hirer's Fact Sheet", note: 'Room sizes, capacities and an inventory of hall equipment', url: './files/hirers-fact-sheet.pdf' },
+  { title: 'Hall floor plan', note: 'Internal layout of the rooms, kitchen and changing rooms', url: './files/hall-floor-plan.pdf' },
+  { title: 'Recreation ground zones', note: 'Pitches and field zones for outdoor bookings', url: './files/field-zones-plan.pdf' },
+  { title: 'User Guide and Instructions', note: 'Keys, the car park barrier, lights and heating on the day', url: './files/hall-user-guide.pdf' },
+  { title: 'Pre-Hire Document', note: 'For larger events: over 200 guests or 50 cars, or the whole hall or field. Send it with your booking request.', url: './files/pre-hire-form-larger-events.docx', type: 'DOC' },
 ];
 
 // Committee contact (About › Contact us, and donations on Support us).
@@ -255,7 +286,7 @@ export const CLUB_500 = {
     { label: 'Christmas prize', amount: '£200', note: 'Full-year members' },
   ],
   email: 'Chieveley500club@outlook.com',
-  formUrl: 'https://www.chieveleyvillagehall.org/200-club',
+  formUrl: './files/500-club-application-form.pdf',
   winners: [
     { month: 'September 2026', first: { no: 146, name: 'Jim & Jenny Usherwood' }, second: { no: 104, name: 'R & R Couzens' } },
   ],
@@ -313,19 +344,17 @@ const U = {
 
 export const PHOTOS = {
   // Page heroes
-  'hero-home': U.countryside,
-  'hero-whats-on': U.yoga,
-  'hero-hire': U.hall,
-  'hero-support': donateSeedling,
-  'hero-about': fieldsAroundChieveley,
-  'hero-404': U.villageSun,
+  'hero-home': './hero/day-1920.jpg', // day/night pair in public/hero/
+  'hero-whats-on': whatsOnDancers, // illustration: ballroom dancers
+  'hero-hire': hireGardenTea, // illustration: tea in the garden
+  'hero-support': supportCanal, // illustration: swans on the canal
+  'hero-about': aboutWalledGarden, // illustration: walled garden with a glasshouse
+  'hero-404': villageGreen,
   // Home
-  'Find: whats-on': U.ballroom,
-  'Find: hire': U.wedding,
-  'Find: support': U.bonfire,
-  'Find: about': U.villageSpire,
-  'The Coffee Stop': U.coffee,
-  'Donate band': U.villageSun,
+  'Find your way': fourWaysInHall, // illustration of the hall behind "Four ways in"
+  'The Coffee Stop': coffeeStop, // illustration: coffee in the garden
+  'Donate band': donateBand, // illustration behind "Keep the lights on"
+  'The large main hall': mainHallIllustration, // illustration of the main hall (home page intro)
   // Rooms
   'Main hall': mainHallWindows,
   'Main hall kitchen': mainHallKitchen,
@@ -337,8 +366,8 @@ export const PHOTOS = {
   'Entrance into Club Room': clubRoomEntrance,
   'The Club Room': clubRoom,
   'Bar area in the Club Room': clubRoomBar,
-  'Grounds & recreation ground': U.cricket,
-  'Playground & parking': U.playground,
+  'Grounds & recreation ground': cricketClub,
+  'Playground & parking': playground,
   // Hall in use
   'Chieveley Village Hall': U.parquet,
   Cricketers: U.cricket,
@@ -354,7 +383,6 @@ export const PHOTOS = {
   'The Club Room bar': U.bar,
   // Past events
   'Christmas lunch': U.banquet,
-  'Themed party': U.balloons,
   'Pet show': U.collie,
   'Family celebration': U.weddingDance,
   'Village event': U.community,
@@ -362,10 +390,10 @@ export const PHOTOS = {
   'Panto night': U.christmas,
   'Summer on the grounds': U.cricket,
   // Events
-  'event-fireworks': U.fireworks,
-  'event-agm': U.circle,
-  'event-christmas-market': U.christmas,
-  'event-coffee-stop': U.coffee2,
+  'event-fireworks': eventFireworks,
+  'event-agm': eventAgm,
+  'event-christmas-market': eventChristmas,
+  'event-coffee-stop': coffeeStop,
   // Support / About
   'Volunteers at the hall': U.community,
   'Bench on the recreation ground': U.bench,

@@ -4,10 +4,11 @@ import { href } from '../router.js';
 // Full-bleed photo hero used at the top of every inner page.
 // `photo` is a key in PHOTOS (content.js).
 // `credit` is an optional photo caption shown small at the top right.
-export function PageHeader({ eyebrow, title, accent, intro, children, photo = 'hero-home', credit }) {
+// pale: for light illustrations, a lighter shade and a soft shadow behind the title.
+export function PageHeader({ eyebrow, title, accent, intro, children, photo = 'hero-home', credit, pale = false }) {
   const id = PHOTOS[photo];
   return (
-    <section className="page-hero">
+    <section className={pale ? 'page-hero page-hero-pale' : 'page-hero'}>
       {id && <img className="page-hero-img" src={img(id, 2400)} alt="" fetchpriority="high" />}
       <div className="page-hero-shade" aria-hidden="true" />
       <div className="wrap page-hero-inner">
@@ -82,6 +83,23 @@ export function JumpLinks({ page, links, label = 'On this page' }) {
         </ul>
       </div>
     </nav>
+  );
+}
+
+// "Check availability" as its own gradient card, linking to the booking
+// calendar on Hire › Booking calendar. wide: the long version, with the
+// arrow on the right.
+export function AvailabilityCard({ wide = false }) {
+  return (
+    <a className={`avail-card${wide ? ' avail-wide' : ''}`} href={href('hire/calendar')}>
+      <span className="avail-text">
+        <span className="avail-title">Check availability</span>
+        <span className="avail-sub">Availability is shown up to a year ahead on our booking calendar.</span>
+      </span>
+      <span className="avail-arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17 17 7M8 7h9v9" /></svg>
+      </span>
+    </a>
   );
 }
 
